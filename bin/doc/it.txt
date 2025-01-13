@@ -1,0 +1,69 @@
+Questo bot ha la seguente struttura:
+
+Inizio
+|__ Gestisci FAQ
+     |__Aggiungi domanda
+     |__Elimina domanda
+     |__Modifica domanda
+     |__Pulisci FAQ
+|__Visualizza FAQ
+|__Gestisci domande
+     |__Pulisci domande
+|__Visualizza domande
+     |__Visualizza statistiche domande
+     |__Visualizza elenco domande
+|__Gestisci utenti
+     |__Aggiungi ruolo
+     |__Modifica ruolo
+     |__Elimina ruolo
+|__Visualizza utenti
+     |__Visualizza statistiche utenti
+|__Fai una domanda
+|__Rispondi a una domanda
+__SPLIT__
+Descrizione dei comandi:
+
+<b>Aggiungi domanda FAQ</b> - permette di aggiungere una domanda frequente. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot.
+
+<b>Elimina domanda FAQ</b> - permette di eliminare una domanda frequente. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. (ID domanda - il suo numero nell'elenco)
+
+<b>Modifica domanda FAQ</b> - permette di modificare una domanda frequente. Per farlo, clicca sul comando, seleziona cosa modificare (domanda o risposta), e segui la sequenza di azioni che invia il bot. (ID domanda - il suo numero nell'elenco)
+
+<b>Pulisci FAQ</b> - permette di pulire completamente l'elenco FAQ. Per farlo, clicca sul comando e poi sul pulsante di conferma.
+
+<b>Visualizza FAQ</b> - permette di aprire l'elenco delle domande frequenti. Per farlo, clicca sul comando. L'elenco viene visualizzato in gruppi di 9 domande, usando i pulsanti <b>«</b> e <b>»</b> puoi scorrere i gruppi di domande. Per visualizzare la risposta, clicca sul pulsante con la domanda.
+
+<b>Pulisci domande</b> - permette di pulire l'intero elenco di domande di tutti i tempi.
+
+<b>Visualizza statistiche domande</b> - permette di visualizzare le statistiche sulle domande. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. Le statistiche includono:
+- <i>numero totale di domande di tutti i tempi</i>
+- <i>numero di domande non elaborate</i>
+- <i>numero di domande in elaborazione</i>
+- <i>numero di domande elaborate</i>
+- <i>tempo medio di risposta a una domanda</i>
+
+<b>Visualizza elenco domande</b> - permette di visualizzare l'ennesimo numero delle ultime domande. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot.
+
+<b>Aggiungi ruolo</b> - permette di aggiungere un ruolo* a un utente Telegram. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. Puoi impostare un ruolo solo per quegli utenti il cui ruolo è inferiore al tuo.
+
+<b>Modifica ruolo</b> - permette di modificare un ruolo* a un utente Telegram. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. Puoi modificare il ruolo solo per quegli utenti il cui ruolo è inferiore al tuo.
+
+<b>Elimina ruolo</b> - permette di eliminare un ruolo* da un utente Telegram. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. Puoi eliminare il ruolo solo per quegli utenti il cui ruolo è inferiore al tuo.
+
+<b>Visualizza statistiche utenti</b> - permette di visualizzare le statistiche sugli utenti con ruoli*. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. Le statistiche includono:
+- <i>nome utente</i>
+- <i>numero di domande elaborate</i>
+
+<b>Fai una domanda</b> - permette di fare una domanda agli utenti con ruoli*. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. La tua domanda viene salvata in modo anonimo sul server. Quando un utente con un ruolo* risponde, la risposta arriverà come risposta al messaggio in cui è stata fatta la domanda; se elimini il messaggio con la domanda, la risposta arriverà come messaggio normale.
+
+<b>Rispondi a una domanda</b> - permette di rispondere a una domanda di un utente senza ruolo*. Per farlo, clicca sul comando e segui la sequenza di azioni che invia il bot. La tua risposta verrà inviata in modo anonimo alla chat dell'utente che l'ha fatta.
+__SPLIT__
+Ruoli:
+
+<b>Sviluppatore</b> - ha accesso a tutte le funzionalità. Livello 3.
+
+<b>Amministratore</b> - ha accesso a tutte le funzionalità, tranne <i>Fai una domanda</i>. Livello 2.
+
+<b>Moderatore</b> - ha accesso a tutte le funzionalità, tranne <i>Fai una domanda</i>, <i>Gestisci FAQ</i>, <i>Gestisci domande</i>. Livello 1.
+
+<b>Utente</b> - ha accesso solo alle funzionalità <i>Fai una domanda</i>, <i>Visualizza FAQ</i>. Livello 0.

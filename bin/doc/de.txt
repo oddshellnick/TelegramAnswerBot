@@ -1,0 +1,69 @@
+Dieser Bot hat folgende Struktur:
+
+Start
+|__ FAQ verwalten
+     |__Frage hinzufügen
+     |__Frage löschen
+     |__Frage bearbeiten
+     |__FAQ leeren
+|__FAQ ansehen
+|__Fragen verwalten
+     |__Fragen löschen
+|__Fragen ansehen
+     |__Fragenstatistik ansehen
+     |__Fragenliste ansehen
+|__Benutzer verwalten
+     |__Rolle hinzufügen
+     |__Rolle ändern
+     |__Rolle löschen
+|__Benutzer ansehen
+     |__Benutzerstatistik ansehen
+|__Frage stellen
+|__Frage beantworten
+__SPLIT__
+Beschreibung der Befehle:
+
+<b>FAQ-Frage hinzufügen</b> - ermöglicht das Hinzufügen einer häufig gestellten Frage. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus.
+
+<b>FAQ-Frage löschen</b> - ermöglicht das Löschen einer häufig gestellten Frage. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. (Fragen-ID - die Nummer in der Liste)
+
+<b>FAQ-Frage bearbeiten</b> - ermöglicht das Ändern einer häufig gestellten Frage. Klicken Sie dazu auf den Befehl, wählen Sie aus, was geändert werden soll (Frage oder Antwort), und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. (Fragen-ID - die Nummer in der Liste)
+
+<b>FAQ leeren</b> - ermöglicht das vollständige Löschen der FAQ-Liste. Klicken Sie dazu auf den Befehl und dann auf die Bestätigungsschaltfläche.
+
+<b>FAQ ansehen</b> - ermöglicht das Öffnen der Liste der häufig gestellten Fragen. Klicken Sie dazu auf den Befehl. Die Liste wird in Gruppen zu je 9 Fragen angezeigt. Mit den Schaltflächen <b>«</b> und <b>»</b> können Sie durch die Fragengruppen blättern. Um die Antwort anzuzeigen, klicken Sie auf die Schaltfläche mit der Frage.
+
+<b>Fragen löschen</b> - ermöglicht das Löschen der gesamten Fragenliste für alle Zeiten.
+
+<b>Fragenstatistik ansehen</b> - ermöglicht die Anzeige der Statistik zu Fragen. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. Die Statistik beinhaltet:
+- <i>Gesamtzahl der Fragen aller Zeiten</i>
+- <i>Anzahl der unbearbeiteten Fragen</i>
+- <i>Anzahl der bearbeiteten Fragen</i>
+- <i>Anzahl der abgeschlossenen Fragen</i>
+- <i>durchschnittliche Antwortzeit auf eine Frage</i>
+
+<b>Fragenliste ansehen</b> - ermöglicht die Anzeige der letzten n Fragen. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus.
+
+<b>Rolle hinzufügen</b> - ermöglicht das Hinzufügen einer Rolle* zu einem Telegram-Benutzer. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. Sie können eine Rolle nur für Benutzer festlegen, deren Rolle niedriger als Ihre ist.
+
+<b>Rolle ändern</b> - ermöglicht das Ändern einer Rolle* für einen Telegram-Benutzer. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. Sie können die Rolle nur für Benutzer ändern, deren Rolle niedriger als Ihre ist.
+
+<b>Rolle löschen</b> - ermöglicht das Löschen einer Rolle* von einem Telegram-Benutzer. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. Sie können die Rolle nur für Benutzer löschen, deren Rolle niedriger als Ihre ist.
+
+<b>Benutzerstatistik ansehen</b> - ermöglicht die Anzeige der Statistik zu Benutzern mit Rollen*. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. Die Statistik beinhaltet:
+- <i>Benutzername</i>
+- <i>Anzahl der bearbeiteten Fragen</i>
+
+<b>Frage stellen</b> - ermöglicht das Stellen einer Frage an Benutzer mit Rollen*. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. Ihre Frage wird anonym auf dem Server gespeichert. Wenn ein Benutzer mit einer Rolle* darauf antwortet, kommt die Antwort als Antwort auf die Nachricht, in der sie gestellt wurde. Wenn Sie die Nachricht mit der Frage löschen, wird die Antwort als normale Nachricht gesendet.
+
+<b>Frage beantworten</b> - ermöglicht die Beantwortung einer Frage von einem Benutzer ohne Rolle*. Klicken Sie dazu auf den Befehl und führen Sie die vom Bot gesendete Abfolge von Aktionen aus. Ihre Antwort wird anonym an den Chat des Benutzers gesendet, der sie gestellt hat.
+__SPLIT__
+Rollen:
+
+<b>Developer</b> - hat Zugriff auf alle Funktionen. Stufe 3.
+
+<b>Administrator</b> - hat Zugriff auf alle Funktionen außer <i>Frage stellen</i>. Stufe 2.
+
+<b>Moderator</b> - hat Zugriff auf alle Funktionen außer <i>Frage stellen</i>, <i>FAQ verwalten</i>, <i>Fragen verwalten</i>. Stufe 1.
+
+<b>Benutzer</b> - hat nur Zugriff auf die Funktionen <i>Frage stellen</i>, <i>FAQ ansehen</i>. Stufe 0.

@@ -1,0 +1,69 @@
+This bot has the following structure:
+
+Start
+|__ Manage FAQ
+     |__Add question
+     |__Delete question
+     |__Edit question
+     |__Clear FAQ
+|__View FAQ
+|__Manage questions
+     |__Clear questions
+|__View questions
+     |__View question statistics
+     |__View question list
+|__Manage users
+     |__Add role
+     |__Change role
+     |__Delete role
+|__View users
+     |__View user statistics
+|__Ask a question
+|__Answer a question
+__SPLIT__
+Command descriptions:
+
+<b>Add FAQ question</b> - allows you to add a frequently asked question. To do this, click on the command and follow the sequence of actions that the bot sends.
+
+<b>Delete FAQ question</b> - allows you to delete a frequently asked question. To do this, click on the command and follow the sequence of actions that the bot sends. (Question ID - its number in the list)
+
+<b>Edit FAQ question</b> - allows you to change a frequently asked question. To do this, click on the command, select what to change (question or answer), and follow the sequence of actions that the bot sends. (Question ID - its number in the list)
+
+<b>Clear FAQ</b> - allows you to completely clear the FAQ list. To do this, click on the command and then on the confirmation button.
+
+<b>View FAQ</b> - allows you to open the list of frequently asked questions. To do this, click on the command. The list is displayed in groups of 9 questions, using the buttons <b>«</b> and <b>»</b> you can scroll through the groups of questions. To view the answer, click on the button with the question.
+
+<b>Clear questions</b> - allows you to clear the entire list of questions for all time.
+
+<b>View question statistics</b> - allows you to view statistics on questions. To do this, click on the command and follow the sequence of actions that the bot sends. Statistics include:
+- <i>total number of questions of all time</i>
+- <i>number of unprocessed questions</i>
+- <i>number of questions in process</i>
+- <i>number of processed questions</i>
+- <i>average response time to a question</i>
+
+<b>View question list</b> - allows you to view the n-th number of the latest questions. To do this, click on the command and follow the sequence of actions that the bot sends.
+
+<b>Add role</b> - allows you to add a role* to a Telegram user. To do this, click on the command and follow the sequence of actions that the bot sends. You can only set a role for users whose role is lower than yours.
+
+<b>Change role</b> - allows you to change a role* for a Telegram user. To do this, click on the command and follow the sequence of actions that the bot sends. You can only change the role for users whose role is lower than yours.
+
+<b>Delete role</b> - allows you to delete a role* from a Telegram user. To do this, click on the command and follow the sequence of actions that the bot sends. You can only delete the role from users whose role is lower than yours.
+
+<b>View user statistics</b> - allows you to view statistics on users with roles*. To do this, click on the command and follow the sequence of actions that the bot sends. Statistics include:
+- <i>username of the user</i>
+- <i>number of processed questions</i>
+
+<b>Ask a question</b> - ask a question to users with roles*. To do this, click on the command and follow the sequence of actions that the bot sends. Your question is saved anonymously on the server. When a user with a role* answers it, the answer will come as a reply to the message in which it was asked; if you delete the message with the question, the answer will be sent as a regular message.
+
+<b>Answer a question</b> - answer a question from a user without a role*. To do this, click on the command and follow the sequence of actions that the bot sends. Your answer will be anonymously sent to the chat of the user who asked it.
+__SPLIT__
+Roles:
+
+<b>Developer</b> - has access to all functionality. Level 3.
+
+<b>Administrator</b> - has access to all functionality except <i>Ask a question</i>. Level 2.
+
+<b>Moderator</b> - has access to all functionality except <i>Ask a question</i>, <i>Manage FAQ</i>, <i>Manage questions</i>. Level 1.
+
+<b>User</b> - only has access to <i>Ask a question</i>, <i>View FAQ</i> functionality. Level 0.

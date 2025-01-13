@@ -1,0 +1,1081 @@
+{
+    "languages": {
+        "ru": "Русский 🇷🇺",
+        "en": "English 🇺🇸",
+        "de": "Deutsch 🇩🇪",
+        "fr": "Français 🇲🇫",
+        "es": "Español 🇪🇸",
+        "it": "Italiano 🇮🇹",
+        "pt": "Português 🇵🇹",
+        "zh": "中文 🇨🇳"
+    },
+    "roles": {
+        "ru": {
+            "developer": "Разработчик",
+            "administrator": "Администратор",
+            "moderator": "Модератор",
+            "user": "Пользователь"
+        },
+        "en": {
+            "developer": "Developer",
+            "administrator": "Administrator",
+            "moderator": "Moderator",
+            "user": "User"
+        },
+        "de": {
+            "developer": "Entwickler",
+            "administrator": "Administrator",
+            "moderator": "Moderator",
+            "user": "Benutzer"
+        },
+        "fr": {
+            "developer": "Développeur",
+            "administrator": "Administrateur",
+            "moderator": "Modérateur",
+            "user": "Utilisateur"
+        },
+        "es": {
+            "developer": "Desarrollador",
+            "administrator": "Administrador",
+            "moderator": "Moderador",
+            "user": "Usuario"
+        },
+        "it": {
+            "developer": "Sviluppatore",
+            "administrator": "Amministratore",
+            "moderator": "Moderatore",
+            "user": "Utente"
+        },
+        "pt": {
+            "developer": "Desenvolvedor",
+            "administrator": "Administrador",
+            "moderator": "Moderador",
+            "user": "Usuário"
+        },
+        "zh": {
+            "developer": "开发者",
+            "administrator": "管理员",
+            "moderator": "主持人",
+            "user": "用户"
+        }
+    },
+    "others": {
+        "ru": {
+            "integer_needed_warning": "Вводить нужно только целое число.",
+            "above_zero_needed_warning": "Нужно число больше нуля.",
+            "decline_button": "Отмена",
+            "back_button": "Назад"
+        },
+        "en": {
+            "integer_needed_warning": "Only an integer is allowed.",
+            "above_zero_needed_warning": "A number greater than zero is required.",
+            "decline_button": "Cancel",
+            "back_button": "Back"
+        },
+        "de": {
+            "integer_needed_warning": "Nur eine ganze Zahl ist erlaubt.",
+            "above_zero_needed_warning": "Eine Zahl größer als Null ist erforderlich.",
+            "decline_button": "Abbrechen",
+            "back_button": "Zurück"
+        },
+        "fr": {
+            "integer_needed_warning": "Seul un entier est autorisé.",
+            "above_zero_needed_warning": "Un nombre supérieur à zéro est requis.",
+            "decline_button": "Annuler",
+            "back_button": "Retour"
+        },
+        "es": {
+            "integer_needed_warning": "Solo se permite un entero.",
+            "above_zero_needed_warning": "Se requiere un número mayor que cero.",
+            "decline_button": "Cancelar",
+            "back_button": "Atrás"
+        },
+        "it": {
+            "integer_needed_warning": "È consentito solo un numero intero.",
+            "above_zero_needed_warning": "È richiesto un numero maggiore di zero.",
+            "decline_button": "Annulla",
+            "back_button": "Indietro"
+        },
+        "pt": {
+            "integer_needed_warning": "Somente um inteiro é permitido.",
+            "above_zero_needed_warning": "É necessário um número maior que zero.",
+            "decline_button": "Cancelar",
+            "back_button": "Voltar"
+        },
+        "zh": {
+            "integer_needed_warning": "只允许整数.",
+            "above_zero_needed_warning": "需要大于零的数字.",
+            "decline_button": "取消",
+            "back_button": "返回"
+        }
+    },
+    "start": {
+        "ru": {
+            "mode_choice": "Выберите действие:",
+            "handle_faq": "Управлять FAQ",
+            "view_faq": "Посмотреть FAQ",
+            "handle_questions": "Управлять вопросами",
+            "view_questions": "Посмотреть вопросы",
+            "handle_users": "Управлять пользователями",
+            "view_users": "Посмотреть пользователей",
+            "ask_question": "Задать вопрос",
+            "answer_question": "Ответить на вопрос",
+            "chose_language": "Язык 🔤"
+        },
+        "en": {
+            "mode_choice": "Choose an action:",
+            "handle_faq": "Manage FAQ",
+            "view_faq": "View FAQ",
+            "handle_questions": "Manage Questions",
+            "view_questions": "View Questions",
+            "handle_users": "Manage Users",
+            "view_users": "View Users",
+            "ask_question": "Ask a Question",
+            "answer_question": "Answer a Question",
+            "chose_language": "Language 🔤"
+        },
+        "de": {
+            "mode_choice": "Wählen Sie eine Aktion:",
+            "handle_faq": "FAQ verwalten",
+            "view_faq": "FAQ ansehen",
+            "handle_questions": "Fragen verwalten",
+            "view_questions": "Fragen ansehen",
+            "handle_users": "Benutzer verwalten",
+            "view_users": "Benutzer ansehen",
+            "ask_question": "Eine Frage stellen",
+            "answer_question": "Eine Frage beantworten",
+            "chose_language": "Sprache 🔤"
+        },
+        "fr": {
+            "mode_choice": "Choisissez une action:",
+            "handle_faq": "Gérer la FAQ",
+            "view_faq": "Voir la FAQ",
+            "handle_questions": "Gérer les questions",
+            "view_questions": "Voir les questions",
+            "handle_users": "Gérer les utilisateurs",
+            "view_users": "Voir les utilisateurs",
+            "ask_question": "Poser une question",
+            "answer_question": "Répondre à une question",
+            "chose_language": "Langue 🔤"
+        },
+        "es": {
+            "mode_choice": "Elige una acción:",
+            "handle_faq": "Gestionar preguntas frecuentes",
+            "view_faq": "Ver preguntas frecuentes",
+            "handle_questions": "Gestionar preguntas",
+            "view_questions": "Ver preguntas",
+            "handle_users": "Gestionar usuarios",
+            "view_users": "Ver usuarios",
+            "ask_question": "Hacer una pregunta",
+            "answer_question": "Responder a una pregunta",
+            "chose_language": "Idioma 🔤"
+        },
+        "it": {
+            "mode_choice": "Scegli un'azione:",
+            "handle_faq": "Gestire le FAQ",
+            "view_faq": "Visualizzare le FAQ",
+            "handle_questions": "Gestire le domande",
+            "view_questions": "Visualizzare le domande",
+            "handle_users": "Gestire gli utenti",
+            "view_users": "Visualizzare gli utenti",
+            "ask_question": "Fai una domanda",
+            "answer_question": "Rispondi a una domanda",
+            "chose_language": "Lingua 🔤"
+        },
+        "pt": {
+            "mode_choice": "Escolha uma ação:",
+            "handle_faq": "Gerenciar FAQ",
+            "view_faq": "Ver FAQ",
+            "handle_questions": "Gerenciar perguntas",
+            "view_questions": "Ver perguntas",
+            "handle_users": "Gerenciar usuários",
+            "view_users": "Ver usuários",
+            "ask_question": "Fazer uma pergunta",
+            "answer_question": "Responder a uma pergunta",
+            "chose_language": "Idioma 🔤"
+        },
+        "zh": {
+            "mode_choice": "选择一个动作:",
+            "handle_faq": "管理常见问题解答",
+            "view_faq": "查看常见问题解答",
+            "handle_questions": "管理问题",
+            "view_questions": "查看问题",
+            "handle_users": "管理用户",
+            "view_users": "查看用户",
+            "ask_question": "提问",
+            "answer_question": "回答问题",
+            "chose_language": "语言 🔤"
+        }
+    },
+    "main": {
+        "message": {
+            "ru": {
+                "answer_notification": "Ваш вопрос: {question}\n\nОтвет: {answer}",
+                "answer_accepted_confirmation": "Ваш ответ отправлен!",
+                "question_answered_warning": "На этот вопрос уже ответили :(",
+                "new_question_notification": "Появился новый вопрос!",
+                "new_question_accepted_confirmation": "Спасибо, ваш вопрос получен!"
+            },
+            "en": {
+                "answer_notification": "Your question: {question}\n\nAnswer: {answer}",
+                "answer_accepted_confirmation": "Your answer has been sent!",
+                "question_answered_warning": "This question has already been answered :(",
+                "new_question_notification": "A new question has appeared!",
+                "new_question_accepted_confirmation": "Thank you, your question has been received!"
+            },
+            "de": {
+                "answer_notification": "Ihre Frage: {question}\n\nAntwort: {answer}",
+                "answer_accepted_confirmation": "Ihre Antwort wurde gesendet!",
+                "question_answered_warning": "Diese Frage wurde bereits beantwortet :(",
+                "new_question_notification": "Es gibt eine neue Frage!",
+                "new_question_accepted_confirmation": "Vielen Dank, Ihre Frage ist eingegangen!"
+            },
+            "fr": {
+                "answer_notification": "Votre question : {question}\n\nRéponse : {answer}",
+                "answer_accepted_confirmation": "Votre réponse a été envoyée !",
+                "question_answered_warning": "Cette question a déjà été répondue :(",
+                "new_question_notification": "Une nouvelle question est apparue !",
+                "new_question_accepted_confirmation": "Merci, votre question a bien été reçue !"
+            },
+            "es": {
+                "answer_notification": "Su pregunta: {question}\n\nRespuesta: {answer}",
+                "answer_accepted_confirmation": "¡Su respuesta ha sido enviada!",
+                "question_answered_warning": "Esta pregunta ya ha sido respondida :(",
+                "new_question_notification": "¡Ha aparecido una nueva pregunta!",
+                "new_question_accepted_confirmation": "¡Gracias, su pregunta ha sido recibida!"
+            },
+            "it": {
+                "answer_notification": "La tua domanda: {question}\n\nRisposta: {answer}",
+                "answer_accepted_confirmation": "La tua risposta è stata inviata!",
+                "question_answered_warning": "Questa domanda ha già ricevuto risposta :(",
+                "new_question_notification": "È apparsa una nuova domanda!",
+                "new_question_accepted_confirmation": "Grazie, la tua domanda è stata ricevuta!"
+            },
+            "pt": {
+                "answer_notification": "Sua pergunta: {question}\n\nResposta: {answer}",
+                "answer_accepted_confirmation": "Sua resposta foi enviada!",
+                "question_answered_warning": "Esta pergunta já foi respondida :(",
+                "new_question_notification": "Uma nova pergunta apareceu!",
+                "new_question_accepted_confirmation": "Obrigado, sua pergunta foi recebida!"
+            },
+            "zh": {
+                "answer_notification": "你的问题: {question}\n\n答案: {answer}",
+                "answer_accepted_confirmation": "你的答案已发送！",
+                "question_answered_warning": "此问题已被回答 :(",
+                "new_question_notification": "出现了一个新问题！",
+                "new_question_accepted_confirmation": "谢谢，你的问题已收到！"
+            }
+        },
+        "handle": {
+            "ru": {
+                "input_question_suggestion": "Пожалуйста, напишите ваш вопрос:",
+                "input_answer_suggestion": "Введите текст ответа:",
+                "cant_ask_question_warning": "Задавать вопросы могут только пользователи.",
+                "cant_answer_question_warning": "У вас нет прав для ответов на вопросы.",
+                "no_questions_warning": "Вопросов больше нет.",
+                "question_preview": "Вопрос от пользователя (ID: {id}):\n\n{text}",
+                "answer_question_button": "Ответить на вопрос",
+                "next_question_button": "Следующий вопрос",
+                "language_choice_suggestion": "Выберите язык:"
+            },
+            "en": {
+                "input_question_suggestion": "Please, enter your question:",
+                "input_answer_suggestion": "Enter the answer text:",
+                "cant_ask_question_warning": "Only users can ask questions.",
+                "cant_answer_question_warning": "You don't have permission to answer questions.",
+                "no_questions_warning": "There are no more questions.",
+                "question_preview": "Question from user (ID: {id}):\n\n{text}",
+                "answer_question_button": "Answer the question",
+                "next_question_button": "Next question",
+                "language_choice_suggestion": "Choose a language:"
+            },
+            "de": {
+                "input_question_suggestion": "Bitte geben Sie Ihre Frage ein:",
+                "input_answer_suggestion": "Geben Sie den Antworttext ein:",
+                "cant_ask_question_warning": "Nur Benutzer können Fragen stellen.",
+                "cant_answer_question_warning": "Sie haben keine Berechtigung, Fragen zu beantworten.",
+                "no_questions_warning": "Es gibt keine weiteren Fragen.",
+                "question_preview": "Frage von Benutzer (ID: {id}):\n\n{text}",
+                "answer_question_button": "Frage beantworten",
+                "next_question_button": "Nächste Frage",
+                "language_choice_suggestion": "Wählen Sie eine Sprache:"
+            },
+            "fr": {
+                "input_question_suggestion": "Veuillez saisir votre question :",
+                "input_answer_suggestion": "Saisissez le texte de la réponse :",
+                "cant_ask_question_warning": "Seuls les utilisateurs peuvent poser des questions.",
+                "cant_answer_question_warning": "Vous n'êtes pas autorisé à répondre aux questions.",
+                "no_questions_warning": "Il n'y a plus de questions.",
+                "question_preview": "Question de l'utilisateur (ID: {id}):\n\n{text}",
+                "answer_question_button": "Répondre à la question",
+                "next_question_button": "Question suivante",
+                "language_choice_suggestion": "Choisissez une langue:"
+            },
+            "es": {
+                "input_question_suggestion": "Por favor, introduzca su pregunta:",
+                "input_answer_suggestion": "Introduzca el texto de la respuesta:",
+                "cant_ask_question_warning": "Solo los usuarios pueden hacer preguntas.",
+                "cant_answer_question_warning": "No tiene permiso para responder preguntas.",
+                "no_questions_warning": "No hay más preguntas.",
+                "question_preview": "Pregunta del usuario (ID: {id}):\n\n{text}",
+                "answer_question_button": "Responder a la pregunta",
+                "next_question_button": "Siguiente pregunta",
+                "language_choice_suggestion": "Elige un idioma:"
+            },
+            "it": {
+                "input_question_suggestion": "Per favore, inserisci la tua domanda:",
+                "input_answer_suggestion": "Inserisci il testo della risposta:",
+                "cant_ask_question_warning": "Solo gli utenti possono fare domande.",
+                "cant_answer_question_warning": "Non hai il permesso di rispondere alle domande.",
+                "no_questions_warning": "Non ci sono più domande.",
+                "question_preview": "Domanda dell'utente (ID: {id}):\n\n{text}",
+                "answer_question_button": "Rispondi alla domanda",
+                "next_question_button": "Domanda successiva",
+                "language_choice_suggestion": "Scegli una lingua:"
+            },
+            "pt": {
+                "input_question_suggestion": "Por favor, digite sua pergunta:",
+                "input_answer_suggestion": "Digite o texto da resposta:",
+                "cant_ask_question_warning": "Apenas usuários podem fazer perguntas.",
+                "cant_answer_question_warning": "Você não tem permissão para responder perguntas.",
+                "no_questions_warning": "Não há mais perguntas.",
+                "question_preview": "Pergunta do usuário (ID: {id}):\n\n{text}",
+                "answer_question_button": "Responder à pergunta",
+                "next_question_button": "Próxima pergunta",
+                "language_choice_suggestion": "Escolha um idioma:"
+            },
+            "zh": {
+                "input_question_suggestion": "请输入你的问题:",
+                "input_answer_suggestion": "请输入答案文本:",
+                "cant_ask_question_warning": "只有用户可以提问.",
+                "cant_answer_question_warning": "你没有权限回答问题.",
+                "no_questions_warning": "没有更多问题了.",
+                "question_preview": "来自用户的问题（ID: {id}）: \n\n{text}",
+                "answer_question_button": "回答问题",
+                "next_question_button": "下一个问题",
+                "language_choice_suggestion": "选择一种语言:"
+            }
+        },
+        "view": {}
+    },
+    "faq": {
+        "message": {
+            "ru": {
+                "input_faq_answer_suggestion": "Введите ответ:",
+                "new_faq_saved_notification": "Новый вопрос сохранен в FAQ.",
+                "no_faq_with_id_warning": "В FAQ нет вопроса с таким ID ({id}).",
+                "faq_with_id_deleted_confirmation": "Вопрос в FAQ (ID = {id}) удалён.",
+                "faq_instance_choice_suggestion": "Что вы хотите редактировать?",
+                "faq_question_choice_button": "Вопрос",
+                "faq_answer_choice_button": "Ответ",
+                "faq_instance_changed_confirmation": "Вопрос в FAQ изменён."
+            },
+            "en": {
+                "input_faq_answer_suggestion": "Enter the answer:",
+                "new_faq_saved_notification": "New FAQ saved.",
+                "no_faq_with_id_warning": "No FAQ with this ID ({id}).",
+                "faq_with_id_deleted_confirmation": "FAQ with ID = {id} deleted.",
+                "faq_instance_choice_suggestion": "What do you want to edit?",
+                "faq_question_choice_button": "Question",
+                "faq_answer_choice_button": "Answer",
+                "faq_instance_changed_confirmation": "FAQ entry changed."
+            },
+            "de": {
+                "input_faq_answer_suggestion": "Antwort eingeben:",
+                "new_faq_saved_notification": "Neuer FAQ-Eintrag gespeichert.",
+                "no_faq_with_id_warning": "Kein FAQ-Eintrag mit dieser ID ({id}).",
+                "faq_with_id_deleted_confirmation": "FAQ-Eintrag mit ID = {id} gelöscht.",
+                "faq_instance_choice_suggestion": "Was möchten Sie bearbeiten?",
+                "faq_question_choice_button": "Frage",
+                "faq_answer_choice_button": "Antwort",
+                "faq_instance_changed_confirmation": "FAQ-Eintrag geändert."
+            },
+            "fr": {
+                "input_faq_answer_suggestion": "Entrez la réponse :",
+                "new_faq_saved_notification": "Nouvelle FAQ enregistrée.",
+                "no_faq_with_id_warning": "Aucune FAQ avec cet ID ({id}).",
+                "faq_with_id_deleted_confirmation": "FAQ avec ID = {id} supprimée.",
+                "faq_instance_choice_suggestion": "Que souhaitez-vous modifier?",
+                "faq_question_choice_button": "Question",
+                "faq_answer_choice_button": "Réponse",
+                "faq_instance_changed_confirmation": "Entrée FAQ modifiée."
+            },
+            "es": {
+                "input_faq_answer_suggestion": "Introduce la respuesta:",
+                "new_faq_saved_notification": "Nueva pregunta frecuente guardada.",
+                "no_faq_with_id_warning": "No hay ninguna pregunta frecuente con este ID ({id}).",
+                "faq_with_id_deleted_confirmation": "Pregunta frecuente con ID = {id} eliminada.",
+                "faq_instance_choice_suggestion": "¿Qué quieres editar?",
+                "faq_question_choice_button": "Pregunta",
+                "faq_answer_choice_button": "Respuesta",
+                "faq_instance_changed_confirmation": "Entrada de preguntas frecuentes modificada."
+            },
+            "it": {
+                "input_faq_answer_suggestion": "Inserisci la risposta:",
+                "new_faq_saved_notification": "Nuova FAQ salvata.",
+                "no_faq_with_id_warning": "Nessuna FAQ con questo ID ({id}).",
+                "faq_with_id_deleted_confirmation": "FAQ con ID = {id} eliminata.",
+                "faq_instance_choice_suggestion": "Cosa vuoi modificare?",
+                "faq_question_choice_button": "Domanda",
+                "faq_answer_choice_button": "Risposta",
+                "faq_instance_changed_confirmation": "Voce FAQ modificata."
+            },
+            "pt": {
+                "input_faq_answer_suggestion": "Digite a resposta:",
+                "new_faq_saved_notification": "Nova FAQ salva.",
+                "no_faq_with_id_warning": "Nenhuma FAQ com este ID ({id}).",
+                "faq_with_id_deleted_confirmation": "FAQ com ID = {id} excluída.",
+                "faq_instance_choice_suggestion": "O que você deseja editar?",
+                "faq_question_choice_button": "Pergunta",
+                "faq_answer_choice_button": "Resposta",
+                "faq_instance_changed_confirmation": "Entrada de FAQ alterada."
+            },
+            "zh": {
+                "input_faq_answer_suggestion": "输入答案:",
+                "new_faq_saved_notification": "新的常见问题已保存.",
+                "no_faq_with_id_warning": "没有此 ID ({id}) 的常见问题.",
+                "faq_with_id_deleted_confirmation": "ID 为 {id} 的常见问题已删除.",
+                "faq_instance_choice_suggestion": "您想编辑什么？",
+                "faq_question_choice_button": "问题",
+                "faq_answer_choice_button": "答案",
+                "faq_instance_changed_confirmation": "常见问题条目已更改."
+            }
+        },
+        "handle": {
+            "ru": {
+                "faq_handle_choice": "Выберите режим управления FAQ:",
+                "cant_handle_faq_warning": "У вас нет прав для управления FAQ.",
+                "faq_clear_button": "Очистить FAQ",
+                "faq_clear_aware": "Вы уверены, что хотите очистить FAQ?",
+                "faq_cleared_notification": "FAQ очищен.",
+                "cant_clear_faq_warning": "У вас нет прав для очищения FAQ.",
+                "edit_faq_button": "Редактировать вопрос",
+                "input_faq_id_to_edit_suggestion": "Введите ID вопроса в FAQ для редактирования:",
+                "input_faq_new_question_suggestion": "Введите новый текст вопроса:",
+                "input_faq_new_answer_suggestion": "Введите новый текст ответа:",
+                "cant_faq_edit_warning": "У вас нет прав для редактирования вопросов FAQ.",
+                "delete_faq_button": "Удалить вопрос",
+                "input_faq_id_to_delete_suggestion": "Введите ID вопроса в FAQ для удаления:",
+                "cant_faq_delete_warning": "У вас нет прав для удаления вопросов FAQ.",
+                "create_faq_button": "Добавить вопрос",
+                "input_faq_question_suggestion": "Введите вопрос:",
+                "cant_create_faq_warning": "У вас нет прав для создания вопросов FAQ."
+            },
+            "en": {
+                "faq_handle_choice": "Select FAQ management mode:",
+                "cant_handle_faq_warning": "You don't have permission to manage FAQs.",
+                "faq_clear_button": "Clear FAQ",
+                "faq_clear_aware": "Are you sure you want to clear the FAQ?",
+                "faq_cleared_notification": "FAQ cleared.",
+                "cant_clear_faq_warning": "You don't have permission to clear the FAQ.",
+                "edit_faq_button": "Edit question",
+                "input_faq_id_to_edit_suggestion": "Enter the FAQ ID to edit:",
+                "input_faq_new_question_suggestion": "Enter the new question text:",
+                "input_faq_new_answer_suggestion": "Enter the new answer text:",
+                "cant_faq_edit_warning": "You don't have permission to edit FAQ questions.",
+                "delete_faq_button": "Delete question",
+                "input_faq_id_to_delete_suggestion": "Enter the FAQ ID to delete:",
+                "cant_faq_delete_warning": "You don't have permission to delete FAQ questions.",
+                "create_faq_button": "Add question",
+                "input_faq_question_suggestion": "Enter the question:",
+                "cant_create_faq_warning": "You don't have permission to create FAQ questions."
+            },
+            "de": {
+                "faq_handle_choice": "FAQ-Verwaltungsmodus auswählen:",
+                "cant_handle_faq_warning": "Sie haben keine Berechtigung, FAQs zu verwalten.",
+                "faq_clear_button": "FAQ löschen",
+                "faq_clear_aware": "Sind Sie sicher, dass Sie die FAQ löschen möchten?",
+                "faq_cleared_notification": "FAQ gelöscht.",
+                "cant_clear_faq_warning": "Sie haben keine Berechtigung, die FAQ zu löschen.",
+                "edit_faq_button": "Frage bearbeiten",
+                "input_faq_id_to_edit_suggestion": "Geben Sie die zu bearbeitende FAQ-ID ein:",
+                "input_faq_new_question_suggestion": "Geben Sie den neuen Fragentext ein:",
+                "input_faq_new_answer_suggestion": "Geben Sie den neuen Antworttext ein:",
+                "cant_faq_edit_warning": "Sie haben keine Berechtigung, FAQ-Fragen zu bearbeiten.",
+                "delete_faq_button": "Frage löschen",
+                "input_faq_id_to_delete_suggestion": "Geben Sie die zu löschende FAQ-ID ein:",
+                "cant_faq_delete_warning": "Sie haben keine Berechtigung, FAQ-Fragen zu löschen.",
+                "create_faq_button": "Frage hinzufügen",
+                "input_faq_question_suggestion": "Geben Sie die Frage ein:",
+                "cant_create_faq_warning": "Sie haben keine Berechtigung, FAQ-Fragen zu erstellen."
+            },
+            "fr": {
+                "faq_handle_choice": "Sélectionnez le mode de gestion des FAQ:",
+                "cant_handle_faq_warning": "Vous n'êtes pas autorisé à gérer les FAQ.",
+                "faq_clear_button": "Effacer les FAQ",
+                "faq_clear_aware": "Êtes-vous sûr de vouloir effacer les FAQ?",
+                "faq_cleared_notification": "FAQ effacées.",
+                "cant_clear_faq_warning": "Vous n'êtes pas autorisé à effacer les FAQ.",
+                "edit_faq_button": "Modifier la question",
+                "input_faq_id_to_edit_suggestion": "Saisissez l'ID de la FAQ à modifier:",
+                "input_faq_new_question_suggestion": "Saisissez le nouveau texte de la question:",
+                "input_faq_new_answer_suggestion": "Saisissez le nouveau texte de la réponse:",
+                "cant_faq_edit_warning": "Vous n'êtes pas autorisé à modifier les questions des FAQ.",
+                "delete_faq_button": "Supprimer la question",
+                "input_faq_id_to_delete_suggestion": "Saisissez l'ID de la FAQ à supprimer:",
+                "cant_faq_delete_warning": "Vous n'êtes pas autorisé à supprimer les questions des FAQ.",
+                "create_faq_button": "Ajouter une question",
+                "input_faq_question_suggestion": "Saisissez la question:",
+                "cant_create_faq_warning": "Vous n'êtes pas autorisé à créer des questions pour les FAQ."
+            },
+            "es": {
+                "faq_handle_choice": "Seleccionar modo de gestión de preguntas frecuentes:",
+                "cant_handle_faq_warning": "No tiene permiso para gestionar las preguntas frecuentes.",
+                "faq_clear_button": "Borrar preguntas frecuentes",
+                "faq_clear_aware": "¿Está seguro de que quiere borrar las preguntas frecuentes?",
+                "faq_cleared_notification": "Preguntas frecuentes borradas.",
+                "cant_clear_faq_warning": "No tiene permiso para borrar las preguntas frecuentes.",
+                "edit_faq_button": "Editar pregunta",
+                "input_faq_id_to_edit_suggestion": "Introduzca el ID de la pregunta frecuente que desea editar:",
+                "input_faq_new_question_suggestion": "Introduzca el nuevo texto de la pregunta:",
+                "input_faq_new_answer_suggestion": "Introduzca el nuevo texto de respuesta:",
+                "cant_faq_edit_warning": "No tiene permiso para editar preguntas frecuentes.",
+                "delete_faq_button": "Eliminar pregunta",
+                "input_faq_id_to_delete_suggestion": "Introduzca el ID de la pregunta frecuente para eliminarla:",
+                "cant_faq_delete_warning": "No tiene permiso para eliminar preguntas frecuentes.",
+                "create_faq_button": "Añadir pregunta",
+                "input_faq_question_suggestion": "Introduce la pregunta:",
+                "cant_create_faq_warning": "No tiene permiso para crear preguntas frecuentes."
+            },
+            "it": {
+                "faq_handle_choice": "Seleziona la modalità di gestione delle FAQ:",
+                "cant_handle_faq_warning": "Non hai il permesso di gestire le FAQ.",
+                "faq_clear_button": "Cancella FAQ",
+                "faq_clear_aware": "Sei sicuro di voler cancellare le FAQ?",
+                "faq_cleared_notification": "FAQ cancellate.",
+                "cant_clear_faq_warning": "Non hai il permesso di cancellare le FAQ.",
+                "edit_faq_button": "Modifica domanda",
+                "input_faq_id_to_edit_suggestion": "Inserisci l'ID della FAQ da modificare:",
+                "input_faq_new_question_suggestion": "Inserisci il nuovo testo della domanda:",
+                "input_faq_new_answer_suggestion": "Inserisci il nuovo testo della risposta:",
+                "cant_faq_edit_warning": "Non hai il permesso di modificare le domande delle FAQ.",
+                "delete_faq_button": "Elimina domanda",
+                "input_faq_id_to_delete_suggestion": "Inserisci l'ID della FAQ da eliminare:",
+                "cant_faq_delete_warning": "Non hai il permesso di eliminare le domande delle FAQ.",
+                "create_faq_button": "Aggiungi domanda",
+                "input_faq_question_suggestion": "Inserisci la domanda:",
+                "cant_create_faq_warning": "Non hai il permesso di creare domande FAQ."
+            },
+            "pt": {
+                "faq_handle_choice": "Selecione o modo de gerenciamento de FAQ:",
+                "cant_handle_faq_warning": "Você não tem permissão para gerenciar FAQs.",
+                "faq_clear_button": "Limpar FAQ",
+                "faq_clear_aware": "Tem certeza de que deseja limpar as FAQs?",
+                "faq_cleared_notification": "FAQs limpas.",
+                "cant_clear_faq_warning": "Você não tem permissão para limpar as FAQs.",
+                "edit_faq_button": "Editar pergunta",
+                "input_faq_id_to_edit_suggestion": "Digite o ID da FAQ para editar:",
+                "input_faq_new_question_suggestion": "Digite o novo texto da pergunta:",
+                "input_faq_new_answer_suggestion": "Digite o novo texto da resposta:",
+                "cant_faq_edit_warning": "Você não tem permissão para editar perguntas de FAQ.",
+                "delete_faq_button": "Excluir pergunta",
+                "input_faq_id_to_delete_suggestion": "Digite o ID da FAQ para excluir:",
+                "cant_faq_delete_warning": "Você não tem permissão para excluir perguntas de FAQ.",
+                "create_faq_button": "Adicionar pergunta",
+                "input_faq_question_suggestion": "Digite a pergunta:",
+                "cant_create_faq_warning": "Você não tem permissão para criar perguntas de FAQ."
+            },
+            "zh": {
+                "faq_handle_choice": "选择常见问题管理模式:",
+                "cant_handle_faq_warning": "你没有权限管理常见问题.",
+                "faq_clear_button": "清除常见问题",
+                "faq_clear_aware": "您确定要清除常见问题吗？",
+                "faq_cleared_notification": "常见问题已清除.",
+                "cant_clear_faq_warning": "你没有权限清除常见问题.",
+                "edit_faq_button": "编辑问题",
+                "input_faq_id_to_edit_suggestion": "输入要编辑的常见问题 ID:",
+                "input_faq_new_question_suggestion": "输入新的问题文本:",
+                "input_faq_new_answer_suggestion": "输入新的答案文本:",
+                "cant_faq_edit_warning": "你没有权限编辑常见问题.",
+                "delete_faq_button": "删除问题",
+                "input_faq_id_to_delete_suggestion": "输入要删除的常见问题 ID:",
+                "cant_faq_delete_warning": "你没有权限删除常见问题.",
+                "create_faq_button": "添加问题",
+                "input_faq_question_suggestion": "输入问题:",
+                "cant_create_faq_warning": "你没有权限创建常见问题."
+            }
+        },
+        "view": {
+            "ru": {
+                "faq_choice_suggestion": "Выберите вопрос:",
+                "faq_output": "Вопрос: {question}\n\nОтвет: {answer}\n\n{views_count} 👀"
+            },
+            "en": {
+                "faq_choice_suggestion": "Choose a question:",
+                "faq_output": "Question: {question}\n\nAnswer: {answer}\n\n{views_count} 👀"
+            },
+            "de": {
+                "faq_choice_suggestion": "Wähle eine Frage:",
+                "faq_output": "Frage: {question}\n\nAntwort: {answer}\n\n{views_count} 👀"
+            },
+            "fr": {
+                "faq_choice_suggestion": "Choisissez une question:",
+                "faq_output": "Question : {question}\n\nRéponse : {answer}\n\n{views_count} 👀"
+            },
+            "es": {
+                "faq_choice_suggestion": "Elija una pregunta:",
+                "faq_output": "Pregunta: {question}\n\nRespuesta: {answer}\n\n{views_count} 👀"
+            },
+            "it": {
+                "faq_choice_suggestion": "Scegli una domanda:",
+                "faq_output": "Domanda: {question}\n\nRisposta: {answer}\n\n{views_count} 👀"
+            },
+            "pt": {
+                "faq_choice_suggestion": "Escolha uma pergunta:",
+                "faq_output": "Pergunta: {question}\n\nResposta: {answer}\n\n{views_count} 👀"
+            },
+            "zh": {
+                "faq_choice_suggestion": "选择一个问题:",
+                "faq_output": "问题: {question}\n\n答案: {answer}\n\n{views_count} 👀"
+            }
+        }
+    },
+    "questions": {
+        "message": {
+            "ru": {
+                "question_output": "{index}: {question}",
+                "questions_count_output": "\n\nВсего вопросов: {questions_count}"
+            },
+            "en": {
+                "question_output": "{index}: {question}",
+                "questions_count_output": "\n\nTotal questions: {questions_count}"
+            },
+            "de": {
+                "question_output": "{index}: {question}",
+                "questions_count_output": "\n\nGesamtzahl der Fragen: {questions_count}"
+            },
+            "fr": {
+                "question_output": "{index} : {question}",
+                "questions_count_output": "\n\nNombre total de questions: {questions_count}"
+            },
+            "es": {
+                "question_output": "{index}: {question}",
+                "questions_count_output": "\n\nTotal de preguntas: {questions_count}"
+            },
+            "it": {
+                "question_output": "{index}: {question}",
+                "questions_count_output": "\n\nTotale domande: {questions_count}"
+            },
+            "pt": {
+                "question_output": "{index}: {question}",
+                "questions_count_output": "\n\nTotal de perguntas: {questions_count}"
+            },
+            "zh": {
+                "question_output": "{index}: {question}",
+                "questions_count_output": "\n\n问题总数: {questions_count}"
+            }
+        },
+        "handle": {
+            "ru": {
+                "questions_handle_suggestion": "Выберите режим управления вопросами:",
+                "cant_handle_questions_warning": "У вас нет прав для управления вопросами.",
+                "clear_questions_button": "Очистить вопросы",
+                "questions_clear_aware": "Вы уверены, что хотите очистить все вопросы?",
+                "questions_cleared_notification": "Вопросы очищены.",
+                "cant_clear_questions_warning": "У вас нет прав для очищения вопросов."
+            },
+            "en": {
+                "questions_handle_suggestion": "Select question management mode:",
+                "cant_handle_questions_warning": "You don't have permission to manage questions.",
+                "clear_questions_button": "Clear questions",
+                "questions_clear_aware": "Are you sure you want to clear all questions?",
+                "questions_cleared_notification": "Questions cleared.",
+                "cant_clear_questions_warning": "You don't have permission to clear questions."
+            },
+            "de": {
+                "questions_handle_suggestion": "Wählen Sie den Fragenverwaltungsmodus:",
+                "cant_handle_questions_warning": "Sie haben keine Berechtigung, Fragen zu verwalten.",
+                "clear_questions_button": "Fragen löschen",
+                "questions_clear_aware": "Sind Sie sicher, dass Sie alle Fragen löschen möchten?",
+                "questions_cleared_notification": "Fragen gelöscht.",
+                "cant_clear_questions_warning": "Sie haben keine Berechtigung, Fragen zu löschen."
+            },
+            "fr": {
+                "questions_handle_suggestion": "Sélectionnez le mode de gestion des questions:",
+                "cant_handle_questions_warning": "Vous n'êtes pas autorisé à gérer les questions.",
+                "clear_questions_button": "Effacer les questions",
+                "questions_clear_aware": "Êtes-vous sûr de vouloir effacer toutes les questions?",
+                "questions_cleared_notification": "Questions effacées.",
+                "cant_clear_questions_warning": "Vous n'êtes pas autorisé à effacer les questions."
+            },
+            "es": {
+                "questions_handle_suggestion": "Seleccione el modo de gestión de preguntas:",
+                "cant_handle_questions_warning": "No tiene permiso para gestionar preguntas.",
+                "clear_questions_button": "Borrar preguntas",
+                "questions_clear_aware": "¿Está seguro de que desea borrar todas las preguntas?",
+                "questions_cleared_notification": "Preguntas borradas.",
+                "cant_clear_questions_warning": "No tiene permiso para borrar preguntas."
+            },
+            "it": {
+                "questions_handle_suggestion": "Seleziona la modalità di gestione delle domande:",
+                "cant_handle_questions_warning": "Non hai il permesso di gestire le domande.",
+                "clear_questions_button": "Cancella domande",
+                "questions_clear_aware": "Sei sicuro di voler cancellare tutte le domande?",
+                "questions_cleared_notification": "Domande cancellate.",
+                "cant_clear_questions_warning": "Non hai il permesso di cancellare le domande."
+            },
+            "pt": {
+                "questions_handle_suggestion": "Selecione o modo de gerenciamento de perguntas:",
+                "cant_handle_questions_warning": "Você não tem permissão para gerenciar perguntas.",
+                "clear_questions_button": "Limpar perguntas",
+                "questions_clear_aware": "Tem certeza de que deseja limpar todas as perguntas?",
+                "questions_cleared_notification": "Perguntas limpas.",
+                "cant_clear_questions_warning": "Você não tem permissão para limpar perguntas."
+            },
+            "zh": {
+                "questions_handle_suggestion": "选择问题管理模式:",
+                "cant_handle_questions_warning": "你没有管理问题的权限.",
+                "clear_questions_button": "清除问题",
+                "questions_clear_aware": "您确定要清除所有问题吗？",
+                "questions_cleared_notification": "问题已清除.",
+                "cant_clear_questions_warning": "你没有清除问题的权限."
+            }
+        },
+        "view": {
+            "ru": {
+                "questions_view_suggestion": "Выберите режим просмотра вопросов:",
+                "cant_view_questions_warning": "У вас нет прав для просмотра вопросов.",
+                "view_questions_statistics_button": "Посмотреть статистику вопросов",
+                "view_questions_button": "Посмотреть список вопросов",
+                "input_number_of_questions_to_view_suggestion": "Введите количество вопросов для просмотра:",
+                "cant_view_questions_list_warning": "У вас нет прав для просмотра списка вопросов.",
+                "cant_view_questions_statistics_warning": "У вас нет прав для просмотра статистики вопросов.",
+                "total_questions_count_output": "Всего вопросов: {number}",
+                "unprocessed_questions_count_output": "Не обработано: {number} ({percent:.1f}%)",
+                "processing_questions_count_output": "Обрабатывается: {number} ({percent:.1f}%)",
+                "processed_questions_count_output": "Обработано: {number} ({percent:.1f}%)",
+                "average_answer_time_output": "Среднее время ответа: {time}"
+            },
+            "en": {
+                "questions_view_suggestion": "Select question viewing mode:",
+                "cant_view_questions_warning": "You don't have permission to view questions.",
+                "view_questions_statistics_button": "View question statistics",
+                "view_questions_button": "View question list",
+                "input_number_of_questions_to_view_suggestion": "Enter the number of questions to view:",
+                "cant_view_questions_list_warning": "You don't have permission to view the question list.",
+                "cant_view_questions_statistics_warning": "You don't have permission to view question statistics.",
+                "total_questions_count_output": "Total questions: {number}",
+                "unprocessed_questions_count_output": "Unprocessed: {number} ({percent:.1f}%)",
+                "processing_questions_count_output": "Processing: {number} ({percent:.1f}%)",
+                "processed_questions_count_output": "Processed: {number} ({percent:.1f}%)",
+                "average_answer_time_output": "Average answer time: {time}"
+            },
+            "de": {
+                "questions_view_suggestion": "Fragenansichtsmodus auswählen:",
+                "cant_view_questions_warning": "Sie haben keine Berechtigung, Fragen anzuzeigen.",
+                "view_questions_statistics_button": "Fragenstatistik anzeigen",
+                "view_questions_button": "Fragenliste anzeigen",
+                "input_number_of_questions_to_view_suggestion": "Geben Sie die Anzahl der anzuzeigenden Fragen ein:",
+                "cant_view_questions_list_warning": "Sie haben keine Berechtigung, die Fragenliste anzuzeigen.",
+                "cant_view_questions_statistics_warning": "Sie haben keine Berechtigung, die Fragenstatistik anzuzeigen.",
+                "total_questions_count_output": "Gesamtzahl der Fragen: {number}",
+                "unprocessed_questions_count_output": "Unbearbeitet: {number} ({percent:.1f}%)",
+                "processing_questions_count_output": "Wird bearbeitet: {number} ({percent:.1f}%)",
+                "processed_questions_count_output": "Bearbeitet: {number} ({percent:.1f}%)",
+                "average_answer_time_output": "Durchschnittliche Antwortzeit: {time}"
+            },
+            "fr": {
+                "questions_view_suggestion": "Sélectionnez le mode d'affichage des questions :",
+                "cant_view_questions_warning": "Vous n'êtes pas autorisé à afficher les questions.",
+                "view_questions_statistics_button": "Afficher les statistiques des questions",
+                "view_questions_button": "Afficher la liste des questions",
+                "input_number_of_questions_to_view_suggestion": "Saisissez le nombre de questions à afficher :",
+                "cant_view_questions_list_warning": "Vous n'êtes pas autorisé à afficher la liste des questions.",
+                "cant_view_questions_statistics_warning": "Vous n'êtes pas autorisé à afficher les statistiques des questions.",
+                "total_questions_count_output": "Nombre total de questions : {number}",
+                "unprocessed_questions_count_output": "Non traitées : {number} ({percent:.1f}%)",
+                "processing_questions_count_output": "En cours de traitement : {number} ({percent:.1f}%)",
+                "processed_questions_count_output": "Traitées : {number} ({percent:.1f}%)",
+                "average_answer_time_output": "Temps de réponse moyen : {time}"
+            },
+            "es": {
+                "questions_view_suggestion": "Seleccione el modo de visualización de preguntas:",
+                "cant_view_questions_warning": "No tiene permiso para ver preguntas.",
+                "view_questions_statistics_button": "Ver estadísticas de preguntas",
+                "view_questions_button": "Ver lista de preguntas",
+                "input_number_of_questions_to_view_suggestion": "Introduzca el número de preguntas para ver:",
+                "cant_view_questions_list_warning": "No tiene permiso para ver la lista de preguntas.",
+                "cant_view_questions_statistics_warning": "No tiene permiso para ver las estadísticas de preguntas.",
+                "total_questions_count_output": "Total de preguntas: {number}",
+                "unprocessed_questions_count_output": "Sin procesar: {number} ({percent:.1f}%)",
+                "processing_questions_count_output": "En proceso: {number} ({percent:.1f}%)",
+                "processed_questions_count_output": "Procesadas: {number} ({percent:.1f}%)",
+                "average_answer_time_output": "Tiempo medio de respuesta: {time}"
+            },
+            "it": {
+                "questions_view_suggestion": "Seleziona la modalità di visualizzazione delle domande:",
+                "cant_view_questions_warning": "Non hai il permesso di visualizzare le domande.",
+                "view_questions_statistics_button": "Visualizza le statistiche delle domande",
+                "view_questions_button": "Visualizza l'elenco delle domande",
+                "input_number_of_questions_to_view_suggestion": "Inserisci il numero di domande da visualizzare:",
+                "cant_view_questions_list_warning": "Non hai il permesso di visualizzare l'elenco delle domande.",
+                "cant_view_questions_statistics_warning": "Non hai il permesso di visualizzare le statistiche delle domande.",
+                "total_questions_count_output": "Totale domande: {number}",
+                "unprocessed_questions_count_output": "Non elaborate: {number} ({percent:.1f}%)",
+                "processing_questions_count_output": "In elaborazione: {number} ({percent:.1f}%)",
+                "processed_questions_count_output": "Elaborate: {number} ({percent:.1f}%)",
+                "average_answer_time_output": "Tempo medio di risposta: {time}"
+            },
+            "pt": {
+                "questions_view_suggestion": "Selecione o modo de exibição de perguntas:",
+                "cant_view_questions_warning": "Você não tem permissão para ver perguntas.",
+                "view_questions_statistics_button": "Ver estatísticas de perguntas",
+                "view_questions_button": "Ver lista de perguntas",
+                "input_number_of_questions_to_view_suggestion": "Digite o número de perguntas para exibir:",
+                "cant_view_questions_list_warning": "Você não tem permissão para ver a lista de perguntas.",
+                "cant_view_questions_statistics_warning": "Você não tem permissão para ver as estatísticas das perguntas.",
+                "total_questions_count_output": "Total de perguntas: {number}",
+                "unprocessed_questions_count_output": "Não processadas: {number} ({percent:.1f}%)",
+                "processing_questions_count_output": "Em processamento: {number} ({percent:.1f}%)",
+                "processed_questions_count_output": "Processadas: {number} ({percent:.1f}%)",
+                "average_answer_time_output": "Tempo médio de resposta: {time}"
+            },
+            "zh": {
+                "questions_view_suggestion": "选择问题查看模式:",
+                "cant_view_questions_warning": "你没有查看问题的权限.",
+                "view_questions_statistics_button": "查看问题统计信息",
+                "view_questions_button": "查看问题列表",
+                "input_number_of_questions_to_view_suggestion": "输入要查看的问题数量:",
+                "cant_view_questions_list_warning": "你没有查看问题列表的权限.",
+                "cant_view_questions_statistics_warning": "你没有查看问题统计信息的权限.",
+                "total_questions_count_output": "问题总数:{number}",
+                "unprocessed_questions_count_output": "未处理:{number} ({percent:.1f}%)",
+                "processing_questions_count_output": "处理中:{number} ({percent:.1f}%)",
+                "processed_questions_count_output": "已处理:{number} ({percent:.1f}%)",
+                "average_answer_time_output": "平均回答时间:{time}"
+            }
+        }
+    },
+    "users": {
+        "message": {
+            "ru": {
+                "user_role_added_confirmation": "@{username} получил роль {role}!",
+                "user_role_removed_confirmation": "У @{username} больше нет прав!",
+                "you_lose_role_notification": "У вас больше нет прав.",
+                "user_dont_have_role_warning": "У @{username} нет роли.",
+                "cant_remove_role_from_user_warning": "Вы не можете забрать права у @{username}."
+            },
+            "en": {
+                "user_role_added_confirmation": "@{username} granted {role} role!",
+                "user_role_removed_confirmation": "@{username} no longer has permissions!",
+                "you_lose_role_notification": "You no longer have permissions.",
+                "user_dont_have_role_warning": "@{username} does not have a role.",
+                "cant_remove_role_from_user_warning": "You cannot remove @{username}'s permissions."
+            },
+            "de": {
+                "user_role_added_confirmation": "@{username} hat die Rolle {role} erhalten!",
+                "user_role_removed_confirmation": "@{username} hat keine Berechtigungen mehr!",
+                "you_lose_role_notification": "Sie haben keine Berechtigungen mehr.",
+                "user_dont_have_role_warning": "@{username} hat keine Rolle.",
+                "cant_remove_role_from_user_warning": "Sie können die Berechtigungen von @{username} nicht entfernen."
+            },
+            "fr": {
+                "user_role_added_confirmation": "@{username} a obtenu le rôle {role}!",
+                "user_role_removed_confirmation": "@{username} n'a plus de droits!",
+                "you_lose_role_notification": "Vous n'avez plus de droits.",
+                "user_dont_have_role_warning": "@{username} n'a pas de rôle.",
+                "cant_remove_role_from_user_warning": "Vous ne pouvez pas supprimer les droits de @{username}."
+            },
+            "es": {
+                "user_role_added_confirmation": "¡@{username} ha recibido el rol {role}!",
+                "user_role_removed_confirmation": "¡@{username} ya no tiene permisos!",
+                "you_lose_role_notification": "Ya no tiene permisos.",
+                "user_dont_have_role_warning": "@{username} no tiene ningún rol.",
+                "cant_remove_role_from_user_warning": "No puede eliminar los permisos de @{username}."
+            },
+            "it": {
+                "user_role_added_confirmation": "@{username} ha ottenuto il ruolo {role}!",
+                "user_role_removed_confirmation": "@{username} non ha più permessi!",
+                "you_lose_role_notification": "Non hai più permessi.",
+                "user_dont_have_role_warning": "@{username} non ha un ruolo.",
+                "cant_remove_role_from_user_warning": "Non puoi rimuovere i permessi di @{username}."
+            },
+            "pt": {
+                "user_role_added_confirmation": "@{username} recebeu a função {role}!",
+                "user_role_removed_confirmation": "@{username} não tem mais permissões!",
+                "you_lose_role_notification": "Você não tem mais permissões.",
+                "user_dont_have_role_warning": "@{username} não tem uma função.",
+                "cant_remove_role_from_user_warning": "Você não pode remover as permissões de @{username}."
+            },
+            "zh": {
+                "user_role_added_confirmation": "@{username} 已获得 {role} 角色！",
+                "user_role_removed_confirmation": "@{username} 不再拥有权限！",
+                "you_lose_role_notification": "你不再拥有权限.",
+                "user_dont_have_role_warning": "@{username} 没有角色.",
+                "cant_remove_role_from_user_warning": "你不能删除 @{username} 的权限."
+            }
+        },
+        "handle": {
+            "ru": {
+                "handle_users_suggestion": "Выберите режим управления пользователями:",
+                "cant_handle_users_warning": "У вас нет прав для управления пользователями.",
+                "add_role_to_user_button": "Добавить роль",
+                "remove_role_to_user_button": "Удалить роль",
+                "input_user_to_remove_role_suggestion": "Введите username пользователя, у которого нужно забрать роль:",
+                "cant_remove_role_from_user_warning": "У вас нет прав для удаления ролей.",
+                "input_user_to_add_role_suggestion": "Введите username, которому присвоить роль:",
+                "cant_add_role_to_user_warning": "У вас нет прав для выдачи ролей.",
+                "role_choice_suggestion": "Выберите роль:"
+            },
+            "en": {
+                "handle_users_suggestion": "Select user management mode:",
+                "cant_handle_users_warning": "You don't have permission to manage users.",
+                "add_role_to_user_button": "Add role",
+                "remove_role_to_user_button": "Remove role",
+                "input_user_to_remove_role_suggestion": "Enter the username of the user whose role you want to remove:",
+                "cant_remove_role_from_user_warning": "You don't have permission to remove roles.",
+                "input_user_to_add_role_suggestion": "Enter the username to assign a role to:",
+                "cant_add_role_to_user_warning": "You don't have permission to grant roles.",
+                "role_choice_suggestion": "Choose a role:"
+            },
+            "de": {
+                "handle_users_suggestion": "Wählen Sie den Benutzerverwaltungsmodus:",
+                "cant_handle_users_warning": "Sie haben keine Berechtigung, Benutzer zu verwalten.",
+                "add_role_to_user_button": "Rolle hinzufügen",
+                "remove_role_to_user_button": "Rolle entfernen",
+                "input_user_to_remove_role_suggestion": "Geben Sie den Benutzernamen des Benutzers ein, dessen Rolle entfernt werden soll:",
+                "cant_remove_role_from_user_warning": "Sie haben keine Berechtigung, Rollen zu entfernen.",
+                "input_user_to_add_role_suggestion": "Geben Sie den Benutzernamen ein, dem eine Rolle zugewiesen werden soll:",
+                "cant_add_role_to_user_warning": "Sie haben keine Berechtigung, Rollen zu vergeben.",
+                "role_choice_suggestion": "Wähle eine Rolle:"
+            },
+            "fr": {
+                "handle_users_suggestion": "Sélectionnez le mode de gestion des utilisateurs:",
+                "cant_handle_users_warning": "Vous n'êtes pas autorisé à gérer les utilisateurs.",
+                "add_role_to_user_button": "Ajouter un rôle",
+                "remove_role_to_user_button": "Supprimer un rôle",
+                "input_user_to_remove_role_suggestion": "Saisissez le nom d'utilisateur de l'utilisateur dont vous souhaitez supprimer le rôle:",
+                "cant_remove_role_from_user_warning": "Vous n'êtes pas autorisé à supprimer des rôles.",
+                "input_user_to_add_role_suggestion": "Saisissez le nom d'utilisateur auquel attribuer un rôle:",
+                "cant_add_role_to_user_warning": "Vous n'êtes pas autorisé à accorder des rôles.",
+                "role_choice_suggestion": "Choisissez un rôle:"
+            },
+            "es": {
+                "handle_users_suggestion": "Seleccionar el modo de gestión de usuarios:",
+                "cant_handle_users_warning": "No tiene permiso para gestionar usuarios.",
+                "add_role_to_user_button": "Añadir rol",
+                "remove_role_to_user_button": "Eliminar rol",
+                "input_user_to_remove_role_suggestion": "Introduzca el nombre de usuario del usuario al que desea eliminar el rol:",
+                "cant_remove_role_from_user_warning": "No tiene permiso para eliminar roles.",
+                "input_user_to_add_role_suggestion": "Introduzca el nombre de usuario al que desea asignar un rol:",
+                "cant_add_role_to_user_warning": "No tiene permiso para conceder roles.",
+                "role_choice_suggestion": "Elija un rol:"
+            },
+            "it": {
+                "handle_users_suggestion": "Seleziona la modalità di gestione degli utenti:",
+                "cant_handle_users_warning": "Non hai il permesso di gestire gli utenti.",
+                "add_role_to_user_button": "Aggiungi ruolo",
+                "remove_role_to_user_button": "Rimuovi ruolo",
+                "input_user_to_remove_role_suggestion": "Inserisci il nome utente dell'utente a cui vuoi rimuovere il ruolo:",
+                "cant_remove_role_from_user_warning": "Non hai il permesso di rimuovere i ruoli.",
+                "input_user_to_add_role_suggestion": "Inserisci il nome utente a cui assegnare un ruolo:",
+                "cant_add_role_to_user_warning": "Non hai il permesso di concedere ruoli.",
+                "role_choice_suggestion": "Scegli un ruolo:"
+            },
+            "pt": {
+                "handle_users_suggestion": "Selecione o modo de gerenciamento de usuários:",
+                "cant_handle_users_warning": "Você não tem permissão para gerenciar usuários.",
+                "add_role_to_user_button": "Adicionar função",
+                "remove_role_to_user_button": "Remover função",
+                "input_user_to_remove_role_suggestion": "Digite o nome de usuário do usuário cuja função você deseja remover:",
+                "cant_remove_role_from_user_warning": "Você não tem permissão para remover funções.",
+                "input_user_to_add_role_suggestion": "Digite o nome de usuário para atribuir uma função:",
+                "cant_add_role_to_user_warning": "Você não tem permissão para conceder funções.",
+                "role_choice_suggestion": "Escolha uma função:"
+            },
+            "zh": {
+                "handle_users_suggestion": "选择用户管理模式:",
+                "cant_handle_users_warning": "你没有管理用户的权限.",
+                "add_role_to_user_button": "添加角色",
+                "remove_role_to_user_button": "删除角色",
+                "input_user_to_remove_role_suggestion": "输入要删除其角色的用户的用户名:",
+                "cant_remove_role_from_user_warning": "你没有删除角色的权限.",
+                "input_user_to_add_role_suggestion": "输入要分配角色的用户名:",
+                "cant_add_role_to_user_warning": "你没有授予角色的权限.",
+                "role_choice_suggestion": "选择一个角色:"
+            }
+        },
+        "view": {
+            "ru": {
+                "users_view_suggestion": "Выберите режим просмотра:",
+                "cant_view_users": "У вас нет прав для просмотра пользователей.",
+                "view_users_statistics_button": "Посмотреть статистику пользователей",
+                "view_users_list_button": "Посмотреть список пользователей",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "У вас нет прав для просмотра списка пользователей.",
+                "user_statistics_output": "@{moderator_username}: {count_questions}",
+                "cant_view_users_statistics_warning": "У вас нет прав для просмотра статистики пользователей."
+            },
+            "en": {
+                "users_view_suggestion": "Select viewing mode:",
+                "cant_view_users": "You don't have permission to view users.",
+                "view_users_statistics_button": "View user statistics",
+                "view_users_list_button": "View user list",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "You don't have permission to view the user list.",
+                "user_statistics_output": "@{moderator_username}: {count_questions}",
+                "cant_view_users_statistics_warning": "You don't have permission to view user statistics."
+            },
+            "de": {
+                "users_view_suggestion": "Anzeigemodus auswählen:",
+                "cant_view_users": "Sie haben keine Berechtigung, Benutzer anzuzeigen.",
+                "view_users_statistics_button": "Benutzerstatistik anzeigen",
+                "view_users_list_button": "Benutzerliste anzeigen",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "Sie haben keine Berechtigung, die Benutzerliste anzuzeigen.",
+                "user_statistics_output": "@{moderator_username}: {count_questions}",
+                "cant_view_users_statistics_warning": "Sie haben keine Berechtigung, Benutzerstatistiken anzuzeigen."
+            },
+            "fr": {
+                "users_view_suggestion": "Sélectionnez le mode d'affichage :",
+                "cant_view_users": "Vous n'êtes pas autorisé à afficher les utilisateurs.",
+                "view_users_statistics_button": "Afficher les statistiques des utilisateurs",
+                "view_users_list_button": "Afficher la liste des utilisateurs",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "Vous n'êtes pas autorisé à afficher la liste des utilisateurs.",
+                "user_statistics_output": "@{moderator_username} : {count_questions}",
+                "cant_view_users_statistics_warning": "Vous n'êtes pas autorisé à afficher les statistiques des utilisateurs."
+            },
+            "es": {
+                "users_view_suggestion": "Seleccionar modo de visualización:",
+                "cant_view_users": "No tiene permiso para ver usuarios.",
+                "view_users_statistics_button": "Ver estadísticas de usuarios",
+                "view_users_list_button": "Ver lista de usuarios",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "No tiene permiso para ver la lista de usuarios.",
+                "user_statistics_output": "@{moderator_username}: {count_questions}",
+                "cant_view_users_statistics_warning": "No tiene permiso para ver las estadísticas de usuarios."
+            },
+            "it": {
+                "users_view_suggestion": "Seleziona la modalità di visualizzazione:",
+                "cant_view_users": "Non hai il permesso di visualizzare gli utenti.",
+                "view_users_statistics_button": "Visualizza le statistiche degli utenti",
+                "view_users_list_button": "Visualizza l'elenco degli utenti",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "Non hai il permesso di visualizzare l'elenco degli utenti.",
+                "user_statistics_output": "@{moderator_username}: {count_questions}",
+                "cant_view_users_statistics_warning": "Non hai il permesso di visualizzare le statistiche degli utenti."
+            },
+            "pt": {
+                "users_view_suggestion": "Selecione o modo de exibição:",
+                "cant_view_users": "Você não tem permissão para ver usuários.",
+                "view_users_statistics_button": "Ver estatísticas do usuário",
+                "view_users_list_button": "Ver lista de usuários",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "Você não tem permissão para ver a lista de usuários.",
+                "user_statistics_output": "@{moderator_username}: {count_questions}",
+                "cant_view_users_statistics_warning": "Você não tem permissão para ver as estatísticas do usuário."
+            },
+            "zh": {
+                "users_view_suggestion": "选择查看模式:",
+                "cant_view_users": "你没有查看用户的权限.",
+                "view_users_statistics_button": "查看用户统计信息",
+                "view_users_list_button": "查看用户列表",
+                "user_output": "@{username} - {role}",
+                "cant_view_users_list_warning": "你没有查看用户列表的权限.",
+                "user_statistics_output": "@{moderator_username}: {count_questions}",
+                "cant_view_users_statistics_warning": "你没有查看用户统计信息的权限."
+            }
+        }
+    }
+}

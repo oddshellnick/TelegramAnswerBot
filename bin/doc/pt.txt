@@ -1,0 +1,69 @@
+Este bot tem a seguinte estrutura:
+
+Início
+|__ Gerenciar FAQ
+     |__Adicionar pergunta
+     |__Remover pergunta
+     |__Editar pergunta
+     |__Limpar FAQ
+|__Ver FAQ
+|__Gerenciar perguntas
+     |__Limpar perguntas
+|__Ver perguntas
+     |__Ver estatísticas de perguntas
+     |__Ver lista de perguntas
+|__Gerenciar usuários
+     |__Adicionar função
+     |__Alterar função
+     |__Remover função
+|__Ver usuários
+     |__Ver estatísticas de usuários
+|__Fazer uma pergunta
+|__Responder a uma pergunta
+__SPLIT__
+Descrição dos comandos:
+
+<b>Adicionar pergunta FAQ</b> - permite adicionar uma pergunta frequente. Para isso, clique no comando e siga a sequência de ações que o bot envia.
+
+<b>Remover pergunta FAQ</b> - permite remover uma pergunta frequente. Para isso, clique no comando e siga a sequência de ações que o bot envia. (ID da pergunta - seu número na lista)
+
+<b>Editar pergunta FAQ</b> - permite modificar uma pergunta frequente. Para isso, clique no comando, selecione o que modificar (pergunta ou resposta), e siga a sequência de ações que o bot envia. (ID da pergunta - seu número na lista)
+
+<b>Limpar FAQ</b> - permite limpar completamente a lista de FAQ. Para isso, clique no comando e depois no botão de confirmação.
+
+<b>Ver FAQ</b> - permite abrir a lista de perguntas frequentes. Para isso, clique no comando. A lista é exibida em grupos de 9 perguntas, usando os botões <b>«</b> e <b>»</b> você pode navegar pelos grupos de perguntas. Para ver a resposta, clique no botão com a pergunta.
+
+<b>Limpar perguntas</b> - permite limpar toda a lista de perguntas de todos os tempos.
+
+<b>Ver estatísticas de perguntas</b> - permite ver as estatísticas das perguntas. Para isso, clique no comando e siga a sequência de ações que o bot envia. As estatísticas incluem:
+- <i>número total de perguntas de todos os tempos</i>
+- <i>número de perguntas não processadas</i>
+- <i>número de perguntas em processamento</i>
+- <i>número de perguntas processadas</i>
+- <i>tempo médio de resposta a uma pergunta</i>
+
+<b>Ver lista de perguntas</b> - permite ver a n-ésima quantidade das últimas perguntas. Para isso, clique no comando e siga a sequência de ações que o bot envia.
+
+<b>Adicionar função</b> - permite adicionar uma função* a um usuário do Telegram. Para isso, clique no comando e siga a sequência de ações que o bot envia. Você só pode atribuir uma função para aqueles usuários cuja função seja inferior à sua.
+
+<b>Alterar função</b> - permite alterar uma função* de um usuário do Telegram. Para isso, clique no comando e siga a sequência de ações que o bot envia. Você só pode alterar a função de usuários cuja função seja inferior à sua.
+
+<b>Remover função</b> - permite remover uma função* de um usuário do Telegram. Para isso, clique no comando e siga a sequência de ações que o bot envia. Você só pode remover a função de usuários cuja função seja inferior à sua.
+
+<b>Ver estatísticas de usuários</b> - permite ver as estatísticas dos usuários com funções*. Para isso, clique no comando e siga a sequência de ações que o bot envia. As estatísticas incluem:
+- <i>nome de usuário</i>
+- <i>número de perguntas processadas</i>
+
+<b>Fazer uma pergunta</b> - permite fazer uma pergunta aos usuários com funções*. Para isso, clique no comando e siga a sequência de ações que o bot envia. Sua pergunta é salva anonimamente no servidor. Quando um usuário com uma função* responder, a resposta chegará como uma resposta à mensagem em que a pergunta foi feita; se você excluir a mensagem com a pergunta, a resposta chegará como uma mensagem normal.
+
+<b>Responder a uma pergunta</b> - permite responder a uma pergunta de um usuário sem função*. Para isso, clique no comando e siga a sequência de ações que o bot envia. Sua resposta será enviada anonimamente para o chat do usuário que a fez.
+__SPLIT__
+Funções:
+
+<b>Desenvolvedor</b> - tem acesso a todas as funcionalidades. Nível 3.
+
+<b>Administrador</b> - tem acesso a todas as funcionalidades, exceto <i>Fazer uma pergunta</i>. Nível 2.
+
+<b>Moderador</b> - tem acesso a todas as funcionalidades, exceto <i>Fazer uma pergunta</i>, <i>Gerenciar FAQ</i>, <i>Gerenciar perguntas</i>. Nível 1.
+
+<b>Usuário</b> - tem acesso apenas às funcionalidades <i>Fazer uma pergunta</i>, <i>Ver FAQ</i>. Nível 0.

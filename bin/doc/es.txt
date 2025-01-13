@@ -1,0 +1,69 @@
+Este bot tiene la siguiente estructura:
+
+Inicio
+|__ Gestionar FAQ
+     |__Agregar pregunta
+     |__Eliminar pregunta
+     |__Editar pregunta
+     |__Limpiar FAQ
+|__Ver FAQ
+|__Gestionar preguntas
+     |__Limpiar preguntas
+|__Ver preguntas
+     |__Ver estadísticas de preguntas
+     |__Ver lista de preguntas
+|__Gestionar usuarios
+     |__Agregar rol
+     |__Cambiar rol
+     |__Eliminar rol
+|__Ver usuarios
+     |__Ver estadísticas de usuarios
+|__Hacer una pregunta
+|__Responder a una pregunta
+__SPLIT__
+Descripción de los comandos:
+
+<b>Agregar pregunta FAQ</b> - permite agregar una pregunta frecuente. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot.
+
+<b>Eliminar pregunta FAQ</b> - permite eliminar una pregunta frecuente. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. (ID de la pregunta - su número en la lista)
+
+<b>Editar pregunta FAQ</b> - permite modificar una pregunta frecuente. Para ello, haga clic en el comando, seleccione qué modificar (pregunta o respuesta), y siga la secuencia de acciones que envía el bot. (ID de la pregunta - su número en la lista)
+
+<b>Limpiar FAQ</b> - permite limpiar completamente la lista de preguntas frecuentes. Para ello, haga clic en el comando y luego en el botón de confirmación.
+
+<b>Ver FAQ</b> - permite abrir la lista de preguntas frecuentes. Para ello, haga clic en el comando. La lista se muestra en grupos de 9 preguntas, usando los botones <b>«</b> y <b>»</b> puede navegar por los grupos de preguntas. Para ver la respuesta, haga clic en el botón con la pregunta.
+
+<b>Limpiar preguntas</b> - permite limpiar toda la lista de preguntas de todos los tiempos.
+
+<b>Ver estadísticas de preguntas</b> - permite ver las estadísticas de las preguntas. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. Las estadísticas incluyen:
+- <i>número total de preguntas de todos los tiempos</i>
+- <i>número de preguntas no procesadas</i>
+- <i>número de preguntas en proceso</i>
+- <i>número de preguntas procesadas</i>
+- <i>tiempo medio de respuesta a una pregunta</i>
+
+<b>Ver lista de preguntas</b> - permite ver la cantidad n-ésima de las últimas preguntas. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot.
+
+<b>Agregar rol</b> - permite agregar un rol* a un usuario de Telegram. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. Solo puede establecer un rol para aquellos usuarios cuyo rol sea inferior al suyo.
+
+<b>Cambiar rol</b> - permite cambiar un rol* a un usuario de Telegram. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. Solo puede cambiar el rol de aquellos usuarios cuyo rol sea inferior al suyo.
+
+<b>Eliminar rol</b> - permite eliminar un rol* de un usuario de Telegram. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. Solo puede eliminar el rol de aquellos usuarios cuyo rol sea inferior al suyo.
+
+<b>Ver estadísticas de usuarios</b> - permite ver las estadísticas de los usuarios con roles*. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. Las estadísticas incluyen:
+- <i>nombre de usuario</i>
+- <i>número de preguntas procesadas</i>
+
+<b>Hacer una pregunta</b> - permite hacer una pregunta a los usuarios con roles*. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. Su pregunta se guarda de forma anónima en el servidor. Cuando un usuario con un rol* la responda, la respuesta llegará como una respuesta al mensaje en el que se hizo la pregunta; si elimina el mensaje con la pregunta, la respuesta llegará como un mensaje normal.
+
+<b>Responder a una pregunta</b> - permite responder a una pregunta de un usuario sin rol*. Para ello, haga clic en el comando y siga la secuencia de acciones que envía el bot. Su respuesta se enviará de forma anónima al chat del usuario que la hizo.
+__SPLIT__
+Roles:
+
+<b>Desarrollador</b> - tiene acceso a todas las funciones. Nivel 3.
+
+<b>Administrador</b> - tiene acceso a todas las funciones, excepto <i>Hacer una pregunta</i>. Nivel 2.
+
+<b>Moderador</b> - tiene acceso a todas las funciones, excepto <i>Hacer una pregunta</i>, <i>Gestionar FAQ</i>, <i>Gestionar preguntas</i>. Nivel 1.
+
+<b>Usuario</b> - solo tiene acceso a las funciones <i>Hacer una pregunta</i>, <i>Ver FAQ</i>. Nivel 0.

@@ -1,0 +1,69 @@
+Ce bot a la structure suivante:
+
+Démarrer
+|__ Gérer la FAQ
+     |__Ajouter une question
+     |__Supprimer une question
+     |__Modifier une question
+     |__Vider la FAQ
+|__Voir la FAQ
+|__Gérer les questions
+     |__Vider les questions
+|__Voir les questions
+     |__Voir les statistiques des questions
+     |__Voir la liste des questions
+|__Gérer les utilisateurs
+     |__Ajouter un rôle
+     |__Modifier un rôle
+     |__Supprimer un rôle
+|__Voir les utilisateurs
+     |__Voir les statistiques des utilisateurs
+|__Poser une question
+|__Répondre à une question
+__SPLIT__
+Description des commandes:
+
+<b>Ajouter une question FAQ</b> - permet d’ajouter une question fréquemment posée. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot.
+
+<b>Supprimer une question FAQ</b> - permet de supprimer une question fréquemment posée. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. (ID de la question - son numéro dans la liste)
+
+<b>Modifier une question FAQ</b> - permet de modifier une question fréquemment posée. Pour ce faire, cliquez sur la commande, sélectionnez ce que vous souhaitez modifier (question ou réponse), et suivez la séquence d’actions envoyée par le bot. (ID de la question - son numéro dans la liste)
+
+<b>Vider la FAQ</b> - permet de vider complètement la liste FAQ. Pour ce faire, cliquez sur la commande, puis sur le bouton de confirmation.
+
+<b>Voir la FAQ</b> - permet d’ouvrir la liste des questions fréquemment posées. Pour ce faire, cliquez sur la commande. La liste est affichée par groupes de 9 questions. Les boutons <b>«</b> et <b>»</b> permettent de parcourir les groupes de questions. Pour voir la réponse, cliquez sur le bouton correspondant à la question.
+
+<b>Vider les questions</b> - permet de vider la liste complète des questions de tous les temps.
+
+<b>Voir les statistiques des questions</b> - permet de voir les statistiques des questions. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. Les statistiques incluent:
+- <i>Nombre total de questions de tous les temps</i>
+- <i>Nombre de questions non traitées</i>
+- <i>Nombre de questions en cours de traitement</i>
+- <i>Nombre de questions traitées</i>
+- <i>Temps de réponse moyen à une question</i>
+
+<b>Voir la liste des questions</b> - permet de voir les n dernières questions. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot.
+
+<b>Ajouter un rôle</b> - permet d’ajouter un rôle* à un utilisateur Telegram. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. Vous ne pouvez attribuer un rôle qu’aux utilisateurs dont le rôle est inférieur au vôtre.
+
+<b>Modifier un rôle</b> - permet de modifier un rôle* d’un utilisateur Telegram. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. Vous ne pouvez modifier le rôle que des utilisateurs dont le rôle est inférieur au vôtre.
+
+<b>Supprimer un rôle</b> - permet de supprimer un rôle* d’un utilisateur Telegram. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. Vous ne pouvez supprimer le rôle que des utilisateurs dont le rôle est inférieur au vôtre.
+
+<b>Voir les statistiques des utilisateurs</b> - permet de voir les statistiques des utilisateurs ayant des rôles*. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. Les statistiques incluent:
+- <i>Nom d’utilisateur</i>
+- <i>Nombre de questions traitées</i>
+
+<b>Poser une question</b> - permet de poser une question aux utilisateurs ayant des rôles*. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. Votre question est enregistrée anonymement sur le serveur. Lorsqu’un utilisateur ayant un rôle* y répond, la réponse arrive sous forme de réponse au message dans lequel elle a été posée. Si vous supprimez le message contenant la question, la réponse sera envoyée comme un message ordinaire.
+
+<b>Répondre à une question</b> - permet de répondre à une question d’un utilisateur sans rôle*. Pour ce faire, cliquez sur la commande et suivez la séquence d’actions envoyée par le bot. Votre réponse sera envoyée anonymement au chat de l’utilisateur qui l’a posée.
+__SPLIT__
+Rôles:
+
+<b>Développeur</b> - a accès à toutes les fonctionnalités. Niveau 3.
+
+<b>Administrateur</b> - a accès à toutes les fonctionnalités, sauf <i>Poser une question</i>. Niveau 2.
+
+<b>Modérateur</b> - a accès à toutes les fonctionnalités, sauf <i>Poser une question</i>, <i>Gérer la FAQ</i>, <i>Gérer les questions</i>. Niveau 1.
+
+<b>Utilisateur</b> - n’a accès qu’aux fonctionnalités <i>Poser une question</i>, <i>Voir la FAQ</i>. Niveau 0.
