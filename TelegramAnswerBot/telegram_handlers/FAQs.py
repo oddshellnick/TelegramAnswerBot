@@ -919,7 +919,7 @@ class FAQs_view:
 		
 		message = await functions.edit_message(
 				current_state[1],
-				self.faq_local[language]["faq_view_choice_suggestion"],
+				self.faq_local[language]["faq_choice_suggestion"],
 				update,
 				context,
 				reply_markup=reply_markup
