@@ -4,6 +4,26 @@ from telegram import Update
 from telegram.ext import ContextTypes
 
 
+class Writeable_MySQL_ConfigDict(typing.TypedDict):
+	"""
+    Configuration parameters for a MySQL.
+
+    Attributes:
+        database (str): The name of the database.
+        host (str): The hostname or IP address of the MySQL server.
+        port (int): The port number of the MySQL server.
+        user (str): The database username.
+        pool_name (str): The name of the connection pool.
+        pool_size (int): The maximum number of connections in the pool.
+    """
+	database: str
+	host: str
+	port: int
+	user: str
+	pool_name: str
+	pool_size: int
+
+
 class UserDataDict(typing.TypedDict):
 	"""
     Represents the data structure for a user.
@@ -22,9 +42,9 @@ class UserDataDict(typing.TypedDict):
 	user_context_data: dict
 
 
-class MySQL_PoolConfigDict(typing.TypedDict):
+class MySQL_ConfigDict(typing.TypedDict):
 	"""
-    Configuration parameters for a MySQL connection pool.
+    Configuration parameters for a MySQL.
 
     Attributes:
         database (str): The name of the database.
@@ -50,10 +70,10 @@ class SettingsDict(typing.TypedDict):
 
     Attributes:
         telegram_token (str): The Telegram Bot API token.
-        MySQL_pool_config (MySQL_PoolConfigDict): Configuration for the MySQL connection pool.
+        MySQL_config (MySQL_ConfigDict): Configuration for the MySQL.
     """
 	telegram_token: str
-	MySQL_pool_config: MySQL_PoolConfigDict
+	MySQL_config: MySQL_ConfigDict
 
 
 class RoleAbilitiesDict(typing.TypedDict):
@@ -997,6 +1017,9 @@ class FAQ_Dict(typing.TypedDict):
 	views_count: int
 
 
-start_panel_type = typing.Callable[[Update, ContextTypes.DEFAULT_TYPE], typing.Coroutine[typing.Any, typing.Any, None]]
+start_panel_type = typing.Callable[
+	[Update, ContextTypes.DEFAULT_TYPE],
+	typing.Coroutine[typing.Any, typing.Any, None]
+]
 get_user_context_type = typing.Callable[[Update, ContextTypes.DEFAULT_TYPE], None]
 language_type = typing.Literal["ru", "en", "de", "fr", "es", "it", "pt", "zh"]

@@ -44,7 +44,8 @@ class AnswerBot:
 		self.doc = functions.read_doc()
 		self.localizations = functions.read_localizations()
 		
-		self.db_handler = data_handlers.MySQLDataHandler(self.settings["MySQL_pool_config"])
+		self.db_handler = data_handlers.MySQLDataHandler(self.settings["MySQL_config"])
+		
 		self.users_controls = telegram_handlers.users.Users_controls(
 				self.start,
 				self.get_user_context,
@@ -53,6 +54,7 @@ class AnswerBot:
 				self.localizations["others"],
 				self.localizations["roles"]
 		)
+		
 		self.questions_controls = telegram_handlers.questions.Questions_controls(
 				self.start,
 				self.get_user_context,
@@ -60,6 +62,7 @@ class AnswerBot:
 				self.localizations["questions"],
 				self.localizations["others"]
 		)
+		
 		self.FAQs_controls = telegram_handlers.FAQs.FAQs_controls(
 				self.start,
 				self.get_user_context,
@@ -67,6 +70,7 @@ class AnswerBot:
 				self.localizations["faq"],
 				self.localizations["others"]
 		)
+		
 		self.main_controls = telegram_handlers.main.Main_controls(
 				self.start,
 				self.get_user_context,
@@ -264,7 +268,10 @@ class AnswerBot:
 			await self.FAQs_controls.message.input_faq_id_to_delete(update, context)
 		elif current_state[0] == telegram_handlers.FAQs.StateFlags.edit_faq:
 			await self.FAQs_controls.message.input_faq_id_to_edit(update, context)
-		elif current_state[0] in [telegram_handlers.FAQs.StateFlags.edit_faq_text, telegram_handlers.FAQs.StateFlags.edit_faq_answer]:
+		elif current_state[0] in [
+			telegram_handlers.FAQs.StateFlags.edit_faq_text,
+			telegram_handlers.FAQs.StateFlags.edit_faq_answer
+		]:
 			await self.FAQs_controls.message.input_faq_instance_to_edit(update, context)
 		
 		if not context.user_data.get("processing", False):
@@ -301,7 +308,10 @@ class AnswerBot:
 		application.run_polling()
 
 
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
+logging.basicConfig(
+		format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+		level=logging.INFO
+)
 
 if __name__ == "__main__":
 	hidden_files_built = build_hidden_files()

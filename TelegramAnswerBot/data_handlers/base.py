@@ -28,6 +28,7 @@ class DataHandler:
             connection_pool (mysql.connector.pooling.MySQLConnectionPool): The connection pool to use for database access.
         """
 		self.connection_pool = connection_pool
+		
 		self.create_table()
 	
 	def create_table(self):

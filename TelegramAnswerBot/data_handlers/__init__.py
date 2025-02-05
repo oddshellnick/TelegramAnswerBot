@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector.pooling import MySQLConnectionPool
-from TelegramAnswerBot.objects_types import MySQL_PoolConfigDict
+from TelegramAnswerBot.objects_types import MySQL_ConfigDict
 from TelegramAnswerBot.data_handlers.FAQs import FAQs_DataHandler
 from TelegramAnswerBot.data_handlers.users import UsersDataHandler
 from TelegramAnswerBot.data_handlers.questions import QuestionsDataHandler
@@ -17,12 +17,12 @@ class MySQLDataHandler:
         questions_data (QuestionsDataHandler): The handler for question-related data.
     """
 	
-	def __init__(self, users_data_pool_config: MySQL_PoolConfigDict):
+	def __init__(self, users_data_pool_config: MySQL_ConfigDict):
 		"""
         Initializes the MySQLDataHandler with a connection pool and creates instances of the individual data handlers.
 
         Args:
-            users_data_pool_config (MySQL_PoolConfigDict): Configuration parameters for the MySQL connection pool.
+            users_data_pool_config (MySQL_ConfigDict): Configuration parameters for the MySQL connection pool.
         """
 		self.connection_pool = mysql.connector.pooling.MySQLConnectionPool(**users_data_pool_config)
 		self.users_data = UsersDataHandler(self.connection_pool)

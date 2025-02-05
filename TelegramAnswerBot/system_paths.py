@@ -12,11 +12,12 @@ class SystemPaths:
 
     Attributes:
         bin_folder (Path): Path to the 'bin' directory.
-        settings (Path): Path to the 'settings.json' file within the 'bin' directory.
+        mysql_config (Path): Path to the 'mysql_config.json' file within the 'bin' directory.
         doc_folder (Path): Path to the folder of docs.
         localizations (Path): Path to the file with localization.
     """
 	bin_folder = pathlib.Path("bin")
-	settings = bin_folder / "settings.json"
+	mysql_config = bin_folder / "mysql_config.json"
+	env = bin_folder / ".env"
 	doc_folder = bin_folder / "doc"
 	localizations = bin_folder / "localizations.json"

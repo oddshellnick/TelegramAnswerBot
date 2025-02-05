@@ -1,4 +1,5 @@
 import json
+import typing
 import pandas
 from telegram.ext import ContextTypes
 from TelegramAnswerBot import (
@@ -188,7 +189,10 @@ class UsersDataHandler(DataHandler):
 				(role_name,)
 		)
 		
-		role_abilities = functions.get_db_line_dict([header[0] for header in cursor.description], [value == 1 for value in cursor.fetchone()])
+		role_abilities = functions.get_db_line_dict(
+				[header[0] for header in cursor.description],
+				[value == 1 for value in cursor.fetchone()]
+		)
 		
 		cursor.close()
 		connection.close()
@@ -201,7 +205,7 @@ class UsersDataHandler(DataHandler):
 
         Args:
             start_role (str): The reference role.
-            sign (str):A comparison operator ("<" or ">") to determine the priority relative to `start_role`.
+            sign (str): A comparison operator ("<" or ">") to determine the priority relative to `start_role`.
 
         Returns:
             list[str]: A list of role names that meet the specified priority criteria. Excludes the "user" role.
@@ -232,7 +236,7 @@ class UsersDataHandler(DataHandler):
 		
 		return roles_by_priority
 	
-	def get_user_chat_id(self, username: str) -> int | None:
+	def get_user_chat_id(self, username: str) -> typing.Optional[int]:
 		"""
         Retrieves the chat ID associated with a specific username.
 
@@ -240,7 +244,7 @@ class UsersDataHandler(DataHandler):
             username (str): The username of the user.
 
         Returns:
-            int | None: The user's chat ID, or None if no chat ID is found for the user.
+            typing.Optional[int]: The user's chat ID, or None if no chat ID is found for the user.
         """
 		connection, cursor = self.get_attributes()
 		
@@ -487,7 +491,7 @@ class UsersDataHandler(DataHandler):
 			self,
 			username: str,
 			last_state: str,
-			last_message_id: int | None,
+			last_message_id: typing.Optional[int],
 			context: ContextTypes.DEFAULT_TYPE
 	):
 		"""
@@ -496,7 +500,7 @@ class UsersDataHandler(DataHandler):
         Args:
             username (str): The username of the user to update.
             last_state (str): The user's last state.
-            last_message_id (int | None): The ID of the last message.
+            last_message_id (typing.Optional[int]): The ID of the last message.
             context (ContextTypes.DEFAULT_TYPE): The Telegram bot context.
         """
 		connection, cursor = self.get_attributes()
