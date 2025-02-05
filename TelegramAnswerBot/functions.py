@@ -1,5 +1,6 @@
 import os
 import json
+import typing
 import pandas
 import pathlib
 from dotenv import load_dotenv
@@ -36,6 +37,39 @@ async def warning_rights_error(
 	await start_panel(update, context)
 
 
+def read_json_file(path: pathlib.Path) -> typing.Any:
+	"""
+    Reads and parses a JSON file.
+
+    Args:
+        path (pathlib.Path): The path to the JSON file.
+
+    Returns:
+        typing.Any: The parsed JSON data.
+    """
+	with open(path, "r", encoding="utf-8") as file:
+		return json.loads(file.read())
+
+
+def read_mysql_writeable_config() -> objects_types.Writeable_MySQL_ConfigDict:
+	"""
+    Reads the writable MySQL configuration from a JSON file.
+
+    Returns:
+        objects_types.Writeable_MySQL_ConfigDict: A dictionary containing the MySQL configuration.
+    """
+	data = read_json_file(SystemPaths.mysql_config)
+	
+	return objects_types.Writeable_MySQL_ConfigDict(
+			database=data["database"],
+			host=data["host"],
+			port=data["port"],
+			user=data["user"],
+			pool_name=data["pool_name"],
+			pool_size=data["pool_size"]
+	)
+
+
 def read_settings() -> objects_types.SettingsDict:
 	"""
     Reads settings data from a JSON file.
@@ -43,19 +77,19 @@ def read_settings() -> objects_types.SettingsDict:
     Returns:
         objects_types.SettingsDict: A dictionary containing settings.
     """
-	data = json.load(open(SystemPaths.settings, "r", encoding="utf-8"))
-	load_dotenv()
+	data = read_mysql_writeable_config()
+	load_dotenv(SystemPaths.env)
 	
 	return objects_types.SettingsDict(
 			telegram_token=os.getenv("TELEGRAM_BOT_TOKEN"),
-			MySQL_pool_config=objects_types.MySQL_PoolConfigDict(
-					database=data["MySQL_pool_config"]["database"],
-					host=data["MySQL_pool_config"]["host"],
-					port=data["MySQL_pool_config"]["port"],
-					user=data["MySQL_pool_config"]["user"],
+			MySQL_config=objects_types.MySQL_ConfigDict(
+					database=data["database"],
+					host=data["host"],
+					port=data["port"],
+					user=data["user"],
 					password=os.getenv("MySQL_PASSWORD"),
-					pool_name=data["MySQL_pool_config"]["pool_name"],
-					pool_size=data["MySQL_pool_config"]["pool_size"]
+					pool_name=data["pool_name"],
+					pool_size=data["pool_size"]
 			)
 	)
 
@@ -89,9 +123,24 @@ def read_users_locals(file: dict) -> objects_types.UsersLocalDict:
 			raise LocalizationError(language, "bin/localizations.json -> users -> view")
 	
 	return objects_types.UsersLocalDict(
-			message=objects_types.UsersMessageLocalDict(**{lang: objects_types.UsersMessageLocalSingleDict(**file["message"][lang]) for lang in accepted_languages}),
-			handle=objects_types.UsersHandleLocalDict(**{lang: objects_types.UsersHandleLocalSingleDict(**file["handle"][lang]) for lang in accepted_languages}),
-			view=objects_types.UsersViewLocalDict(**{lang: objects_types.UsersViewLocalSingleDict(**file["view"][lang]) for lang in accepted_languages})
+			message=objects_types.UsersMessageLocalDict(
+					**{
+						lang: objects_types.UsersMessageLocalSingleDict(**file["message"][lang])
+						for lang in accepted_languages
+					}
+			),
+			handle=objects_types.UsersHandleLocalDict(
+					**{
+						lang: objects_types.UsersHandleLocalSingleDict(**file["handle"][lang])
+						for lang in accepted_languages
+					}
+			),
+			view=objects_types.UsersViewLocalDict(
+					**{
+						lang: objects_types.UsersViewLocalSingleDict(**file["view"][lang])
+						for lang in accepted_languages
+					}
+			)
 	)
 
 
@@ -127,13 +176,22 @@ def read_questions_locals(file: dict) -> objects_types.QuestionsLocalDict:
 	return objects_types.QuestionsLocalDict(
 			message=objects_types.QuestionsMessageLocalDict(
 					**{
-						lang: objects_types.QuestionsMessageLocalSingleDict(**file["message"][lang]) for lang in accepted_languages
+						lang: objects_types.QuestionsMessageLocalSingleDict(**file["message"][lang])
+						for lang in accepted_languages
 					}
 			),
 			handle=objects_types.QuestionsHandleLocalDict(
-					**{lang: objects_types.QuestionsHandleLocalSingleDict(**file["handle"][lang]) for lang in accepted_languages}
+					**{
+						lang: objects_types.QuestionsHandleLocalSingleDict(**file["handle"][lang])
+						for lang in accepted_languages
+					}
 			),
-			view=objects_types.QuestionsViewLocalDict(**{lang: objects_types.QuestionsViewLocalSingleDict(**file["view"][lang]) for lang in accepted_languages})
+			view=objects_types.QuestionsViewLocalDict(
+					**{
+						lang: objects_types.QuestionsViewLocalSingleDict(**file["view"][lang])
+						for lang in accepted_languages
+					}
+			)
 	)
 
 
@@ -166,9 +224,24 @@ def read_faq_locals(file: dict) -> objects_types.FaqLocalDict:
 			raise LocalizationError(language, "bin/localizations.json -> faq -> view")
 	
 	return objects_types.FaqLocalDict(
-			message=objects_types.FaqMessageLocalDict(**{lang: objects_types.FaqMessageLocalSingleDict(**file["message"][lang]) for lang in accepted_languages}),
-			handle=objects_types.FaqHandleLocalDict(**{lang: objects_types.FaqHandleLocalSingleDict(**file["handle"][lang]) for lang in accepted_languages}),
-			view=objects_types.FaqViewLocalDict(**{lang: objects_types.FaqViewLocalSingleDict(**file["view"][lang]) for lang in accepted_languages})
+			message=objects_types.FaqMessageLocalDict(
+					**{
+						lang: objects_types.FaqMessageLocalSingleDict(**file["message"][lang])
+						for lang in accepted_languages
+					}
+			),
+			handle=objects_types.FaqHandleLocalDict(
+					**{
+						lang: objects_types.FaqHandleLocalSingleDict(**file["handle"][lang])
+						for lang in accepted_languages
+					}
+			),
+			view=objects_types.FaqViewLocalDict(
+					**{
+						lang: objects_types.FaqViewLocalSingleDict(**file["view"][lang])
+						for lang in accepted_languages
+					}
+			)
 	)
 
 
@@ -199,8 +272,18 @@ def read_main_locals(file: dict) -> objects_types.MainLocalDict:
 			raise LocalizationError(language, "bin/localizations.json -> main -> handle")
 	
 	return objects_types.MainLocalDict(
-			message=objects_types.MainMessageLocalDict(**{lang: objects_types.MainMessageLocalSingleDict(**file["message"][lang]) for lang in accepted_languages}),
-			handle=objects_types.MainHandleLocalDict(**{lang: objects_types.MainHandleLocalSingleDict(**file["handle"][lang]) for lang in accepted_languages}),
+			message=objects_types.MainMessageLocalDict(
+					**{
+						lang: objects_types.MainMessageLocalSingleDict(**file["message"][lang])
+						for lang in accepted_languages
+					}
+			),
+			handle=objects_types.MainHandleLocalDict(
+					**{
+						lang: objects_types.MainHandleLocalSingleDict(**file["handle"][lang])
+						for lang in accepted_languages
+					}
+			),
 			view=file["view"]
 	)
 
@@ -226,7 +309,12 @@ def read_start_locals(file: dict) -> objects_types.StartLocalDict:
 		if language not in file.keys():
 			raise LocalizationError(language, "bin/localizations.json -> start")
 	
-	return objects_types.StartLocalDict(**{lang: objects_types.StartLocalSingleDict(**file[lang]) for lang in accepted_languages})
+	return objects_types.StartLocalDict(
+			**{
+				lang: objects_types.StartLocalSingleDict(**file[lang])
+				for lang in accepted_languages
+			}
+	)
 
 
 def read_others_locals(file: dict) -> objects_types.OthersLocalDict:
@@ -249,7 +337,12 @@ def read_others_locals(file: dict) -> objects_types.OthersLocalDict:
 		if language not in file.keys():
 			raise LocalizationError(language, "bin/localizations.json -> others")
 	
-	return objects_types.OthersLocalDict(**{lang: objects_types.OthersLocalSingleDict(**file[lang]) for lang in accepted_languages})
+	return objects_types.OthersLocalDict(
+			**{
+				lang: objects_types.OthersLocalSingleDict(**file[lang])
+				for lang in accepted_languages
+			}
+	)
 
 
 def read_roles_locals(file: dict) -> objects_types.RolesLocalDict:
@@ -272,7 +365,12 @@ def read_roles_locals(file: dict) -> objects_types.RolesLocalDict:
 		if language not in file.keys():
 			raise LocalizationError(language, "bin/localizations.json -> roles")
 	
-	return objects_types.RolesLocalDict(**{lang: objects_types.RolesLocalSingleDict(**file[lang]) for lang in accepted_languages})
+	return objects_types.RolesLocalDict(
+			**{
+				lang: objects_types.RolesLocalSingleDict(**file[lang])
+				for lang in accepted_languages
+			}
+	)
 
 
 def read_languages_locals(file: dict) -> objects_types.LanguagesDict:
@@ -313,18 +411,32 @@ def read_localizations() -> objects_types.LocalizationsDict:
     Raises:
         LocalizationError: If a language is missing from the input data.
     """
-	file = json.load(open(SystemPaths.localizations, "r", encoding="utf-8"))
+	data = read_json_file(SystemPaths.localizations)
 	
 	return objects_types.LocalizationsDict(
-			languages=read_languages_locals(file["languages"]),
-			roles=read_roles_locals(file["roles"]),
-			others=read_others_locals(file["others"]),
-			start=read_start_locals(file["start"]),
-			main=read_main_locals(file["main"]),
-			faq=read_faq_locals(file["faq"]),
-			questions=read_questions_locals(file["questions"]),
-			users=read_users_locals(file["users"])
+			languages=read_languages_locals(data["languages"]),
+			roles=read_roles_locals(data["roles"]),
+			others=read_others_locals(data["others"]),
+			start=read_start_locals(data["start"]),
+			main=read_main_locals(data["main"]),
+			faq=read_faq_locals(data["faq"]),
+			questions=read_questions_locals(data["questions"]),
+			users=read_users_locals(data["users"])
 	)
+
+
+def read_text_file(path: pathlib.Path) -> str:
+	"""
+    Reads the content of a text file.
+
+    Args:
+        path (pathlib.Path): The path to the text file.
+
+    Returns:
+        str: The content of the text file as a string.
+    """
+	with open(path, "r", encoding="utf-8") as file:
+		return file.read()
 
 
 def read_doc() -> dict[str, list[str]]:
@@ -343,8 +455,10 @@ def read_doc() -> dict[str, list[str]]:
 		if f"{language}.txt" not in doc_files:
 			raise LocalizationError(language, f"bin/doc/{language}.txt")
 	
-	return {language: open(SystemPaths.doc_folder / f"{language}.txt", "r", encoding="utf-8").read().split("\n__SPLIT__\n")
-		for language in accepted_languages}
+	return {
+		language: read_text_file(SystemPaths.doc_folder / f"{language}.txt").split("\n__SPLIT__\n")
+		for language in accepted_languages
+	}
 
 
 def preprocess_username(username: str) -> str:
@@ -363,7 +477,7 @@ def preprocess_username(username: str) -> str:
 	return username
 
 
-def get_language(context: ContextTypes.DEFAULT_TYPE) -> objects_types.language_type | None:
+def get_language(context: ContextTypes.DEFAULT_TYPE) -> typing.Optional[objects_types.language_type]:
 	"""
     Retrieves the user's preferred language from the context.
 
@@ -374,7 +488,7 @@ def get_language(context: ContextTypes.DEFAULT_TYPE) -> objects_types.language_t
         context (ContextTypes.DEFAULT_TYPE): The Telegram context object containing user data.
 
     Returns:
-        objects_types.language_type | None: The two-letter language code (e.g., "en" for English, "ru" for Russian) or None if no valid language is found.
+        typing.Optional[objects_types.language_type]: The two-letter language code (e.g., "en" for English, "ru" for Russian) or None if no valid language is found.
     """
 	language = context.user_data.get("language", None)
 	
@@ -384,13 +498,13 @@ def get_language(context: ContextTypes.DEFAULT_TYPE) -> objects_types.language_t
 	return None
 
 
-def get_db_line_dict(headers: list[str], row: list | tuple | None) -> dict:
+def get_db_line_dict(headers: list[str], row: typing.Optional[typing.Union[list, tuple]]) -> dict:
 	"""
     Creates a dictionary from a database row and its corresponding headers.
 
     Args:
         headers (list[str]): A list of column headers.
-        row (list | tuple | None): A tuple or list representing a database row, or None if no row is found.
+        row (typing.Optional[typing.Union[list, tuple]]): A tuple or list representing a database row, or None if no row is found.
 
     Returns:
         dict: A dictionary where keys are headers and values are the corresponding row values. Returns an empty dictionary if the input is invalid or if the row is None.
@@ -418,7 +532,7 @@ def get_db_data_frame(headers: list[str], rows: list[tuple]) -> pandas.DataFrame
 	return pandas.DataFrame()
 
 
-def get_current_state(context: ContextTypes.DEFAULT_TYPE) -> tuple[str, int | None]:
+def get_current_state(context: ContextTypes.DEFAULT_TYPE) -> tuple[str, typing.Optional[int]]:
 	"""
     Retrieves the current state from the user's context data.
 
@@ -426,7 +540,7 @@ def get_current_state(context: ContextTypes.DEFAULT_TYPE) -> tuple[str, int | No
         context (ContextTypes.DEFAULT_TYPE): The Telegram bot context.
 
     Returns:
-        tuple[str, int | None]: A tuple containing the current state (a string) and the message ID (an integer or None). Defaults to ("", None) if no state is found.
+        tuple[str, typing.Optional[int]]: A tuple containing the current state (a string) and the message ID (an integer or None). Defaults to ("", None) if no state is found.
     """
 	return context.user_data.get("current_state", ("", None))
 
@@ -453,7 +567,7 @@ async def edit_message(
 		text: str,
 		update: Update,
 		context: ContextTypes.DEFAULT_TYPE,
-		reply_markup: InlineKeyboardMarkup | None = None
+		reply_markup: typing.Optional[InlineKeyboardMarkup] = None
 ) -> Message:
 	"""
     Edits a message or sends a new one if the original message can't be edited. Clears "temp" data in the context if a new message is sent.
@@ -463,7 +577,7 @@ async def edit_message(
         text (str): The new text for the message.
         update (Update): The Telegram update object.
         context (ContextTypes.DEFAULT_TYPE): The Telegram bot context.
-        reply_markup (InlineKeyboardMarkup | None):The reply markup for the message. Defaults to None.
+        reply_markup (typing.Optional[InlineKeyboardMarkup]):The reply markup for the message. Defaults to None.
 
     Returns:
         Message: The sent message object.
@@ -478,23 +592,55 @@ async def edit_message(
 	return await context.bot.send_message(chat_id=update.effective_chat.id, text=text, reply_markup=reply_markup)
 
 
+def write_env_file(path: pathlib.Path, values: dict[str, typing.Any]):
+	"""
+    Writes a dictionary of key-value pairs to an environment file.
+
+    Args:
+        path (pathlib.Path): The path to the environment file.
+        values (dict[str, typing.Any]): A dictionary containing the key-value pairs to write to the file.
+    """
+	with open(path, "w+", encoding="utf-8") as file:
+		file.write(
+				"\n".join(
+						f"{key}={'"' if isinstance(value, str) else ''}{value}{'"' if isinstance(value, str) else ''}"
+						for key, value in values.items()
+				)
+		)
+
+
+def write_json_file(path: pathlib.Path, data: typing.Any):
+	"""
+    Writes data to a JSON file.
+
+    Args:
+        path (pathlib.Path): The path to the JSON file.
+        data (typing.Any): The data to be written to the file.
+    """
+	with open(path, "w+", encoding="utf-8") as file:
+		file.write(json.dumps(data, ensure_ascii=False, indent=4))
+
+
 def build_hidden_files() -> list[pathlib.Path]:
 	"""
     Builds and returns a list of hidden configuration files.
 
     This function creates the necessary hidden configuration files for the application if they don't already exist, initializing them with default values.
-    Currently, it creates the settings file only if it's missing.
 
     Returns:
-        list[pathlib.Path]: A list of pathlib.Path objects representing the created hidden files. Returns an empty list if no files were created.
+        list[pathlib.Path]: A list of pathlib.Path objects representing the created hidden files.
     """
 	hidden_files_built = []
 	
-	if not SystemPaths.settings.is_file():
-		settings = {
-			"MySQL_pool_config": {"database": "", "host": "", "port": 0, "user": "", "pool_name": "", "pool_size": 0}
-		}
-		open(SystemPaths.settings, "w+", encoding="utf-8").write(json.dumps(settings, ensure_ascii=False, indent=4))
-		hidden_files_built.append(SystemPaths.settings)
+	if not SystemPaths.mysql_config.is_file():
+		write_json_file(
+				SystemPaths.mysql_config,
+				objects_types.Writeable_MySQL_ConfigDict(database="", host="", port=0, user="", pool_name="", pool_size=0)
+		)
+		hidden_files_built.append(SystemPaths.mysql_config)
+	
+	if not SystemPaths.env.is_file():
+		write_env_file(SystemPaths.env, {"TELEGRAM_BOT_TOKEN": "", "MySQL_PASSWORD": ""})
+		hidden_files_built.append(SystemPaths.env)
 	
 	return hidden_files_built

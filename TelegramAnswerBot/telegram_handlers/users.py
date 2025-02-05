@@ -123,11 +123,19 @@ class Users_messages:
 		self.db_handler.users_data.change_user_role(username, context.user_data["temp"]["role_to_set"])
 		await context.bot.send_message(
 				chat_id=update.effective_chat.id,
-				text=self.users_local[language]["user_role_added_confirmation"].format(username=username, role=self.roles_local[language][context.user_data["temp"]["role_to_set"]])
+				text=self.users_local[language]["user_role_added_confirmation"].format(
+						username=username,
+						role=self.roles_local[language][context.user_data["temp"]["role_to_set"]]
+				)
 		)
 		
 		context.user_data.pop("processing")
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.handle_new_moderator_username_message, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.handle_new_moderator_username_message,
+				None,
+				context
+		)
 	
 	async def input_username_to_remove_role(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
@@ -164,7 +172,10 @@ class Users_messages:
 				)
 		
 				if user_data["chat_id"] is not None:
-					await context.bot.send_message(chat_id=int(user_data["chat_id"]), text=self.users_local[language]["you_lose_role_notification"])
+					await context.bot.send_message(
+							chat_id=int(user_data["chat_id"]),
+							text=self.users_local[language]["you_lose_role_notification"]
+					)
 		else:
 			await context.bot.send_message(
 					chat_id=update.effective_chat.id,
@@ -247,14 +258,36 @@ class Users_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_users_handle"]:
-			await functions.warning_rights_error(self.users_local[language]["cant_remove_role_from_user_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.users_local[language]["cant_remove_role_from_user_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
-		reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.handle_users)]])
+		reply_markup = InlineKeyboardMarkup(
+				[
+					[
+						InlineKeyboardButton(
+								self.others_local[language]["decline_button"],
+								callback_data=StateFlags.handle_users
+						)
+					]
+				]
+		)
 		
-		message = await update.effective_message.edit_text(text=self.users_local[language]["input_user_to_remove_role_suggestion"], reply_markup=reply_markup)
+		message = await update.effective_message.edit_text(
+				text=self.users_local[language]["input_user_to_remove_role_suggestion"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.remove_user_role, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.remove_user_role,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def chose_user_to_add_role(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -280,12 +313,22 @@ class Users_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_users_handle"]:
-			await functions.warning_rights_error(self.users_local[language]["cant_add_role_to_user_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.users_local[language]["cant_add_role_to_user_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		message = await update.effective_message.edit_text(text=self.users_local[language]["input_user_to_add_role_suggestion"])
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.chose_user_to_add_role, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.chose_user_to_add_role,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 		context.user_data["temp"]["role_to_set"] = re.search(r"_\*(\w+)\*\Z", update.callback_query.data).group(1)
 	
@@ -312,7 +355,12 @@ class Users_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_users_handle"]:
-			await functions.warning_rights_error(self.users_local[language]["cant_add_role_to_user_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.users_local[language]["cant_add_role_to_user_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		accepted_roles = self.db_handler.users_data.get_roles_by_priority(context.user_data["role"], "<")
@@ -323,14 +371,30 @@ class Users_handle:
 						self.roles_local[language][accepted_role],
 						callback_data=f"{StateFlags.chose_user_to_add_role}_*{accepted_role}*"
 				)
-			] for accepted_role in accepted_roles
+			]
+			for accepted_role in accepted_roles
 		]
-		keyboard.append([InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.handle_users)])
+		keyboard.append(
+				[
+					InlineKeyboardButton(
+							self.others_local[language]["decline_button"],
+							callback_data=StateFlags.handle_users
+					)
+				]
+		)
 		reply_markup = InlineKeyboardMarkup(keyboard)
 		
-		message = await update.effective_message.edit_text(text=self.users_local[language]["role_choice_suggestion"], reply_markup=reply_markup)
+		message = await update.effective_message.edit_text(
+				text=self.users_local[language]["role_choice_suggestion"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.add_user_role, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.add_user_role,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def handle_users(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -356,17 +420,30 @@ class Users_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_users_handle"]:
-			await functions.warning_rights_error(self.users_local[language]["cant_handle_users_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.users_local[language]["cant_handle_users_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		keyboard = [
 			[
-				InlineKeyboardButton(self.users_local[language]["add_role_to_user_button"], callback_data=StateFlags.add_user_role)
+				InlineKeyboardButton(
+						self.users_local[language]["add_role_to_user_button"],
+						callback_data=StateFlags.add_user_role
+				)
 			],
 			[
-				InlineKeyboardButton(self.users_local[language]["remove_role_to_user_button"], callback_data=StateFlags.remove_user_role)
+				InlineKeyboardButton(
+						self.users_local[language]["remove_role_to_user_button"],
+						callback_data=StateFlags.remove_user_role
+				)
 			],
-			[InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")]
+			[
+				InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")
+			]
 		]
 		reply_markup = InlineKeyboardMarkup(keyboard)
 		
@@ -378,7 +455,12 @@ class Users_handle:
 				reply_markup=reply_markup
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.handle_users, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.handle_users,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
@@ -393,7 +475,10 @@ class Users_handle:
 						[
 							CallbackQueryHandler(callback=self.handle_users, pattern=StateFlags.handle_users),
 							CallbackQueryHandler(callback=self.add_user_role, pattern=StateFlags.add_user_role),
-							CallbackQueryHandler(callback=self.chose_user_to_add_role, pattern=StateFlags.chose_user_to_add_role),
+							CallbackQueryHandler(
+									callback=self.chose_user_to_add_role,
+									pattern=StateFlags.chose_user_to_add_role
+							),
 							CallbackQueryHandler(callback=self.remove_user_role, pattern=StateFlags.remove_user_role)
 						],
 						key=lambda x: len(x.pattern.pattern),
@@ -467,20 +552,30 @@ class Users_view:
 			return
 		
 		if not context.user_data["abilities"]["able_to_users_view"]:
-			await functions.warning_rights_error(self.users_local[language]["cant_view_users_list_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.users_local[language]["cant_view_users_list_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		await functions.edit_message(
 				message_to_edit=current_state[1],
 				text="\n".join(
-						f"@{row['username']} - {self.roles_local[language][row['role']]}" for index,
-						row in self.db_handler.users_data.get_users_data().iterrows()
+						f"@{row['username']} - {self.roles_local[language][row['role']]}"
+						for index, row in self.db_handler.users_data.get_users_data().iterrows()
 				),
 				update=update,
 				context=context
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_users_list, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_users_list,
+				None,
+				context
+		)
 		context.user_data.pop("processing")
 		
 		await self.start_panel(update, context)
@@ -506,7 +601,12 @@ class Users_view:
 			return
 		
 		if not context.user_data["abilities"]["able_to_users_view"]:
-			await functions.warning_rights_error(self.users_local[language]["cant_view_users_statistics_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.users_local[language]["cant_view_users_statistics_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		moderators_statistics = self.db_handler.questions_data.get_users_statistics()
@@ -514,13 +614,19 @@ class Users_view:
 		await functions.edit_message(
 				message_to_edit=current_state[1],
 				text="\n".join(
-						f"@{row["moderator_username"]}: {row["count_questions"]}" for username, row in moderators_statistics.iterrows()
+						f"@{row["moderator_username"]}: {row["count_questions"]}"
+						for username, row in moderators_statistics.iterrows()
 				),
 				update=update,
 				context=context
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_users_statistics, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_users_statistics,
+				None,
+				context
+		)
 		context.user_data.pop("processing")
 		
 		await self.start_panel(update, context)
@@ -546,7 +652,12 @@ class Users_view:
 			return
 		
 		if not context.user_data["abilities"]["able_to_users_view"]:
-			await functions.warning_rights_error(self.users_local[language]["cant_view_users"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.users_local[language]["cant_view_users"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		keyboard = [
@@ -557,9 +668,14 @@ class Users_view:
 				)
 			],
 			[
-				InlineKeyboardButton(self.users_local[language]["view_users_list_button"], callback_data=StateFlags.view_users_list)
+				InlineKeyboardButton(
+						self.users_local[language]["view_users_list_button"],
+						callback_data=StateFlags.view_users_list
+				)
 			],
-			[InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")]
+			[
+				InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")
+			]
 		]
 		reply_markup = InlineKeyboardMarkup(keyboard)
 		
@@ -571,7 +687,12 @@ class Users_view:
 				reply_markup=reply_markup
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_users, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_users,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
@@ -585,7 +706,10 @@ class Users_view:
 				sorted(
 						[
 							CallbackQueryHandler(callback=self.view_users, pattern=StateFlags.view_users),
-							CallbackQueryHandler(callback=self.view_users_statistics, pattern=StateFlags.view_users_statistics),
+							CallbackQueryHandler(
+									callback=self.view_users_statistics,
+									pattern=StateFlags.view_users_statistics
+							),
 							CallbackQueryHandler(callback=self.view_users_list, pattern=StateFlags.view_users_list)
 						],
 						key=lambda x: len(x.pattern.pattern),
@@ -629,9 +753,31 @@ class Users_controls:
             others_local (OthersLocalDict): Localized strings for general application use.
             roles_local (RolesLocalDict): Localized strings related to roles.
         """
-		self.view = Users_view(start_panel, get_user_context, db_handler, users_local["view"], others_local, roles_local)
-		self.handle = Users_handle(start_panel, get_user_context, db_handler, users_local["handle"], others_local, roles_local)
-		self.message = Users_messages(start_panel, get_user_context, db_handler, users_local["message"], roles_local)
+		self.view = Users_view(
+				start_panel,
+				get_user_context,
+				db_handler,
+				users_local["view"],
+				others_local,
+				roles_local
+		)
+		
+		self.handle = Users_handle(
+				start_panel,
+				get_user_context,
+				db_handler,
+				users_local["handle"],
+				others_local,
+				roles_local
+		)
+		
+		self.message = Users_messages(
+				start_panel,
+				get_user_context,
+				db_handler,
+				users_local["message"],
+				roles_local
+		)
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
 		"""
@@ -645,7 +791,8 @@ class Users_controls:
         """
 		return list(
 				sorted(
-						self.view.get_callback_query_handlers() + self.handle.get_callback_query_handlers(),
+						self.view.get_callback_query_handlers() +
+						self.handle.get_callback_query_handlers(),
 						key=lambda x: len(x.pattern.pattern),
 						reverse=True
 				)

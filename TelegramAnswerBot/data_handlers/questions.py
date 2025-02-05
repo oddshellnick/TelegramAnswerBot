@@ -73,7 +73,15 @@ class QuestionsDataHandler(DataHandler):
             VALUES
                 (%s, %s, %s, %s, %s, %s, %s)
             """,
-				(user_id, chat_id, message_id, username, first_name, last_name, question)
+				(
+						user_id,
+						chat_id,
+						message_id,
+						username,
+						first_name,
+						last_name,
+						question
+				)
 		)
 		connection.commit()
 		
@@ -108,7 +116,9 @@ class QuestionsDataHandler(DataHandler):
 				(question_id, moderator_username)
 		)
 		
-		question_reservation = objects_types.QuestionDict(**functions.get_db_line_dict([header[0] for header in cursor.description], cursor.fetchone()))
+		question_reservation = objects_types.QuestionDict(
+				**functions.get_db_line_dict([header[0] for header in cursor.description], cursor.fetchone())
+		)
 		
 		cursor.close()
 		connection.close()
@@ -279,7 +289,9 @@ class QuestionsDataHandler(DataHandler):
                     """
 			)
 		
-		first_unanswered_question = objects_types.QuestionDict(**functions.get_db_line_dict([header[0] for header in cursor.description], cursor.fetchone()))
+		first_unanswered_question = objects_types.QuestionDict(
+				**functions.get_db_line_dict([header[0] for header in cursor.description], cursor.fetchone())
+		)
 		
 		cursor.close()
 		connection.close()
@@ -338,7 +350,9 @@ class QuestionsDataHandler(DataHandler):
                 """
 		)
 		
-		questions_stats = objects_types.QuestionStatsDict(**functions.get_db_line_dict([header[0] for header in cursor.description], cursor.fetchone()))
+		questions_stats = objects_types.QuestionStatsDict(
+				**functions.get_db_line_dict([header[0] for header in cursor.description], cursor.fetchone())
+		)
 		
 		cursor.close()
 		connection.close()

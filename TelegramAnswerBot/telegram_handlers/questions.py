@@ -111,7 +111,10 @@ class Question_message:
 		try:
 			number_of_questions = int(update.message.text)
 		except ValueError:
-			await context.bot.send_message(chat_id=update.effective_chat.id, text=self.others_local[language]["integer_needed_warning"])
+			await context.bot.send_message(
+					chat_id=update.effective_chat.id,
+					text=self.others_local[language]["integer_needed_warning"]
+			)
 		else:
 			total_questions = self.db_handler.questions_data.get_total_questions_count()
 			if number_of_questions > total_questions:
@@ -126,7 +129,12 @@ class Question_message:
 			await context.bot.send_message(chat_id=update.effective_chat.id, text=questions_to_view)
 		finally:
 			context.user_data.pop("processing")
-			self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_number_of_questions_to_view, None, context)
+			self.db_handler.users_data.update_last_state(
+					update.effective_user.username,
+					StateFlags.input_number_of_questions_to_view,
+					None,
+					context
+			)
 
 
 class Questions_handle:
@@ -189,14 +197,24 @@ class Questions_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_questions_handle"]:
-			await functions.warning_rights_error(self.question_local[language]["cant_clear_questions_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.question_local[language]["cant_clear_questions_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		self.db_handler.questions_data.clear_questions_data()
 		
 		await update.effective_message.edit_text(text=self.question_local[language]["questions_cleared_notification"])
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.clear_questions_confirm, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.clear_questions_confirm,
+				None,
+				context
+		)
 		
 		await self.start_panel(update, context)
 	
@@ -221,7 +239,12 @@ class Questions_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_questions_handle"]:
-			await functions.warning_rights_error(self.question_local[language]["cant_clear_questions_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.question_local[language]["cant_clear_questions_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		keyboard = [
@@ -232,14 +255,25 @@ class Questions_handle:
 				)
 			],
 			[
-				InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.handle_questions)
+				InlineKeyboardButton(
+						self.others_local[language]["decline_button"],
+						callback_data=StateFlags.handle_questions
+				)
 			]
 		]
 		reply_markup = InlineKeyboardMarkup(keyboard)
 		
-		message = await update.effective_message.edit_text(text=self.question_local[language]["questions_clear_aware"], reply_markup=reply_markup)
+		message = await update.effective_message.edit_text(
+				text=self.question_local[language]["questions_clear_aware"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.clear_questions_request, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.clear_questions_request,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def handle_questions(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -263,7 +297,12 @@ class Questions_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_questions_handle"]:
-			await functions.warning_rights_error(self.question_local[language]["cant_handle_questions_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.question_local[language]["cant_handle_questions_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		keyboard = [
@@ -273,7 +312,9 @@ class Questions_handle:
 						callback_data=StateFlags.clear_questions_request
 				)
 			],
-			[InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")]
+			[
+				InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")
+			]
 		]
 		
 		reply_markup = InlineKeyboardMarkup(keyboard)
@@ -286,7 +327,12 @@ class Questions_handle:
 				reply_markup=reply_markup
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.handle_questions, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.handle_questions,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
@@ -300,8 +346,14 @@ class Questions_handle:
 				sorted(
 						[
 							CallbackQueryHandler(callback=self.handle_questions, pattern=StateFlags.handle_questions),
-							CallbackQueryHandler(callback=self.clear_questions_request, pattern=StateFlags.clear_questions_request),
-							CallbackQueryHandler(callback=self.clear_questions_confirm, pattern=StateFlags.clear_questions_confirm)
+							CallbackQueryHandler(
+									callback=self.clear_questions_request,
+									pattern=StateFlags.clear_questions_request
+							),
+							CallbackQueryHandler(
+									callback=self.clear_questions_confirm,
+									pattern=StateFlags.clear_questions_confirm
+							)
 						],
 						key=lambda x: len(x.pattern.pattern),
 						reverse=True
@@ -371,13 +423,21 @@ class Questions_view:
 			return
 		
 		if not context.user_data["abilities"]["able_to_questions_view"]:
-			await functions.warning_rights_error(self.question_local[language]["cant_view_questions_list_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.question_local[language]["cant_view_questions_list_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		reply_markup = InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.view_questions)
+						InlineKeyboardButton(
+								self.others_local[language]["decline_button"],
+								callback_data=StateFlags.view_questions
+						)
 					]
 				]
 		)
@@ -387,7 +447,12 @@ class Questions_view:
 				reply_markup=reply_markup
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_questions_list, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_questions_list,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def view_questions_statistics(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -421,8 +486,14 @@ class Questions_view:
 		
 		questions_stats = self.db_handler.questions_data.get_questions_stats()
 		
-		percent_unanswered = (questions_stats["unanswered_questions"] / questions_stats["total_questions"]) * 100 if questions_stats["total_questions"] else 0
-		percent_processing = (questions_stats["processing_questions"] / questions_stats["total_questions"]) * 100 if questions_stats["total_questions"] else 0
+		percent_unanswered = (
+				questions_stats["unanswered_questions"] /
+				questions_stats["total_questions"]
+		) * 100 if questions_stats["total_questions"] else 0
+		percent_processing = (
+				questions_stats["processing_questions"] /
+				questions_stats["total_questions"]
+		) * 100 if questions_stats["total_questions"] else 0
 		percent_answered = (questions_stats["answered_questions"] / questions_stats["total_questions"]) * 100 if questions_stats["total_questions"] else 0
 		
 		average_answer_time = self.db_handler.questions_data.get_average_answer_time()
@@ -430,14 +501,33 @@ class Questions_view:
 		
 		stats_text = "\n".join(
 				[
-					self.question_local[language]["total_questions_count_output"].format(number=questions_stats['total_questions']), self.question_local[language]["unprocessed_questions_count_output"].format(number=questions_stats['unanswered_questions'], percent=percent_unanswered), self.question_local[language]["processing_questions_count_output"].format(number=questions_stats['processing_questions'
-				],
-				percent=percent_processing
-		), self.question_local[language]["processed_questions_count_output"].format(number=questions_stats['answered_questions'], percent=percent_answered), self.question_local[language]["average_answer_time_output"].format(time=average_answer_time)])
+					self.question_local[language]["total_questions_count_output"].format(number=questions_stats['total_questions']),
+					self.question_local[language]["unprocessed_questions_count_output"].format(
+							number=questions_stats['unanswered_questions'],
+							percent=percent_unanswered
+					),
+					self.question_local[language]["processing_questions_count_output"].format(
+							number=questions_stats['processing_questions'],
+							percent=percent_processing
+					),
+					self.question_local[language]["processed_questions_count_output"].format(number=questions_stats['answered_questions'], percent=percent_answered),
+					self.question_local[language]["average_answer_time_output"].format(time=average_answer_time)
+				]
+		)
 		
-		await functions.edit_message(message_to_edit=current_state[1], text=stats_text, update=update, context=context)
+		await functions.edit_message(
+				message_to_edit=current_state[1],
+				text=stats_text,
+				update=update,
+				context=context
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_questions_statistics, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_questions_statistics,
+				None,
+				context
+		)
 		
 		await self.start_panel(update, context)
 	
@@ -457,12 +547,21 @@ class Questions_view:
 			return
 		
 		current_state = functions.get_current_state(context)
-		if current_state[0] not in ["start", StateFlags.view_questions_statistics, StateFlags.view_questions_list] or current_state[1] != update.effective_message.message_id:
+		if current_state[0] not in [
+			"start",
+			StateFlags.view_questions_statistics,
+			StateFlags.view_questions_list
+		] or current_state[1] != update.effective_message.message_id:
 			await self.start_panel(update, context)
 			return
 		
 		if not context.user_data["abilities"]["able_to_questions_view"]:
-			await functions.warning_rights_error(self.question_local[language]["cant_view_questions_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.question_local[language]["cant_view_questions_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		keyboard = [
@@ -473,9 +572,14 @@ class Questions_view:
 				)
 			],
 			[
-				InlineKeyboardButton(self.question_local[language]["view_questions_button"], callback_data=StateFlags.view_questions_list)
+				InlineKeyboardButton(
+						self.question_local[language]["view_questions_button"],
+						callback_data=StateFlags.view_questions_list
+				)
 			],
-			[InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")]
+			[
+				InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")
+			]
 		]
 		reply_markup = InlineKeyboardMarkup(keyboard)
 		
@@ -487,7 +591,12 @@ class Questions_view:
 				reply_markup=reply_markup
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_questions, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_questions,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
@@ -501,8 +610,14 @@ class Questions_view:
 				sorted(
 						[
 							CallbackQueryHandler(callback=self.view_questions, pattern=StateFlags.view_questions),
-							CallbackQueryHandler(callback=self.view_questions_statistics, pattern=StateFlags.view_questions_statistics),
-							CallbackQueryHandler(callback=self.view_questions_list, pattern=StateFlags.view_questions_list)
+							CallbackQueryHandler(
+									callback=self.view_questions_statistics,
+									pattern=StateFlags.view_questions_statistics
+							),
+							CallbackQueryHandler(
+									callback=self.view_questions_list,
+									pattern=StateFlags.view_questions_list
+							)
 						],
 						key=lambda x: len(x.pattern.pattern),
 						reverse=True
@@ -543,9 +658,29 @@ class Questions_controls:
             question_local (objects_types.QuestionsLocalDict): A dictionary containing localized strings for various question-related operations (view, handle, message).
             others_local (objects_types.OthersLocalDict): A dictionary containing other localized strings used across the application.
         """
-		self.view = Questions_view(start_panel, get_user_context, db_handler, question_local["view"], others_local)
-		self.handle = Questions_handle(start_panel, get_user_context, db_handler, question_local["handle"], others_local)
-		self.message = Question_message(start_panel, get_user_context, db_handler, question_local["message"], others_local)
+		self.view = Questions_view(
+				start_panel,
+				get_user_context,
+				db_handler,
+				question_local["view"],
+				others_local
+		)
+		
+		self.handle = Questions_handle(
+				start_panel,
+				get_user_context,
+				db_handler,
+				question_local["handle"],
+				others_local
+		)
+		
+		self.message = Question_message(
+				start_panel,
+				get_user_context,
+				db_handler,
+				question_local["message"],
+				others_local
+		)
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
 		"""
@@ -559,7 +694,8 @@ class Questions_controls:
         """
 		return list(
 				sorted(
-						self.view.get_callback_query_handlers() + self.handle.get_callback_query_handlers(),
+						self.view.get_callback_query_handlers() +
+						self.handle.get_callback_query_handlers(),
 						key=lambda x: len(x.pattern.pattern),
 						reverse=True
 				)

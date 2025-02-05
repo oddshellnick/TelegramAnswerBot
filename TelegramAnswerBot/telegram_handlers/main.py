@@ -142,9 +142,15 @@ class Main_message:
 		
 			self.db_handler.questions_data.mark_question_as_answered(context.user_data["temp"]["question_id"])
 		
-			await context.bot.send_message(chat_id=update.effective_chat.id, text=self.main_local[language]["answer_accepted_confirmation"])
+			await context.bot.send_message(
+					chat_id=update.effective_chat.id,
+					text=self.main_local[language]["answer_accepted_confirmation"]
+			)
 		else:
-			await context.bot.send_message(chat_id=update.effective_chat.id, text=self.main_local[language]["question_answered_warning"])
+			await context.bot.send_message(
+					chat_id=update.effective_chat.id,
+					text=self.main_local[language]["question_answered_warning"]
+			)
 		
 		context.user_data["temp"] = {}
 		context.user_data.pop("processing")
@@ -181,15 +187,26 @@ class Main_message:
 		
 		for user_chat_receiving_messages in self.db_handler.users_data.get_users_chats_receiving_messages():
 			try:
-				await context.bot.send_message(chat_id=user_chat_receiving_messages, text=self.main_local[language]["new_question_notification"])
+				await context.bot.send_message(
+						chat_id=user_chat_receiving_messages,
+						text=self.main_local[language]["new_question_notification"]
+				)
 			except BadRequest:
 				pass
 		
-		await context.bot.send_message(chat_id=update.effective_chat.id, text=self.main_local[language]["new_question_accepted_confirmation"])
+		await context.bot.send_message(
+				chat_id=update.effective_chat.id,
+				text=self.main_local[language]["new_question_accepted_confirmation"]
+		)
 		
 		context.user_data["temp"] = {}
 		context.user_data.pop("processing")
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_question, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.input_question,
+				None,
+				context
+		)
 
 
 class Main_handle:
@@ -258,7 +275,12 @@ class Main_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_ask"]:
-			await functions.warning_rights_error(self.main_local[language]["cant_ask_question_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.main_local[language]["cant_ask_question_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		user_id = update.effective_user.id
@@ -267,7 +289,13 @@ class Main_handle:
 		first_name = update.effective_user.first_name
 		last_name = update.effective_user.last_name
 		
-		reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data="start")]])
+		reply_markup = InlineKeyboardMarkup(
+				[
+					[
+						InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data="start")
+					]
+				]
+		)
 		
 		message = await functions.edit_message(
 				message_to_edit=current_state[1],
@@ -284,7 +312,12 @@ class Main_handle:
 			"first_name": first_name,
 			"last_name": last_name
 		}
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.ask_question, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.ask_question,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def answer_question(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -308,7 +341,12 @@ class Main_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_answer"]:
-			await functions.warning_rights_error(self.main_local[language]["cant_answer_question_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.main_local[language]["cant_answer_question_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		if context.user_data["temp"].get("declined_questions", None) is None:
@@ -324,12 +362,20 @@ class Main_handle:
 		
 			keyboard = [
 				[
-					InlineKeyboardButton(self.main_local[language]["answer_question_button"], callback_data=StateFlags.reply_to_question)
+					InlineKeyboardButton(
+							self.main_local[language]["answer_question_button"],
+							callback_data=StateFlags.reply_to_question
+					)
 				],
 				[
-					InlineKeyboardButton(self.main_local[language]["next_question_button"], callback_data=StateFlags.decline_question)
+					InlineKeyboardButton(
+							self.main_local[language]["next_question_button"],
+							callback_data=StateFlags.decline_question
+					)
 				],
-				[InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")]
+				[
+					InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")
+				]
 			]
 			reply_markup = InlineKeyboardMarkup(keyboard)
 		
@@ -342,12 +388,22 @@ class Main_handle:
 			)
 		
 			context.user_data["temp"]["question_id"] = unanswered_question["question_id"]
-			self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.answer_question, message.message_id, context)
+			self.db_handler.users_data.update_last_state(
+					update.effective_user.username,
+					StateFlags.answer_question,
+					message.message_id,
+					context
+			)
 			context.user_data["processing"] = True
 		else:
 			await update.effective_message.edit_text(text=self.main_local[language]["no_questions_warning"])
 		
-			self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.answer_question, None, context)
+			self.db_handler.users_data.update_last_state(
+					update.effective_user.username,
+					StateFlags.answer_question,
+					None,
+					context
+			)
 		
 			await self.start_panel(update, context)
 	
@@ -372,7 +428,12 @@ class Main_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_answer"]:
-			await functions.warning_rights_error(self.main_local[language]["cant_answer_question_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.main_local[language]["cant_answer_question_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		if context.user_data["temp"].get("declined_questions", None) is None:
@@ -413,13 +474,32 @@ class Main_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_answer"]:
-			await functions.warning_rights_error(self.main_local[language]["cant_answer_question_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.main_local[language]["cant_answer_question_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
-		reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data="start")]])
-		await update.effective_message.edit_text(text=self.main_local[language]["input_answer_suggestion"], reply_markup=reply_markup)
+		reply_markup = InlineKeyboardMarkup(
+				[
+					[
+						InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data="start")
+					]
+				]
+		)
+		await update.effective_message.edit_text(
+				text=self.main_local[language]["input_answer_suggestion"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.reply_to_question, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.reply_to_question,
+				None,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def view_languages_group(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -434,7 +514,12 @@ class Main_handle:
 		current_state = functions.get_current_state(context)
 		
 		if (
-				current_state[0] not in ["start", StateFlags.next_languages_group, StateFlags.previous_languages_group] or current_state[1] != update.effective_message.message_id
+				current_state[0] not in [
+					"start",
+					StateFlags.next_languages_group,
+					StateFlags.previous_languages_group
+				]
+				or current_state[1] != update.effective_message.message_id
 		) and current_state[0] != "needed_language":
 			await self.start_panel(update, context)
 			return
@@ -453,7 +538,10 @@ class Main_handle:
 		languages_group_data = dict(list(self.languages_dict.items())[start_index:end_index])
 		
 		keyboard = [
-			[InlineKeyboardButton(language, callback_data=f"{StateFlags.set_language}_{literal}")] for literal, language in languages_group_data.items()
+			[
+				InlineKeyboardButton(language, callback_data=f"{StateFlags.set_language}_{literal}")
+			]
+			for literal, language in languages_group_data.items()
 		]
 		if current_state[0] != "needed_language" and language is not None:
 			keyboard.append(
@@ -484,7 +572,12 @@ class Main_handle:
 		else:
 			message = await update.effective_user.send_message("🇷🇺🇺🇸🇩🇪", reply_markup=reply_markup)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_languages_group, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_languages_group,
+				message.message_id,
+				context
+		)
 	
 	async def next_languages_group(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
@@ -502,7 +595,8 @@ class Main_handle:
 					StateFlags.view_languages_group,
 					StateFlags.next_languages_group,
 					StateFlags.previous_languages_group
-				] or current_state[1] != update.effective_message.message_id
+				]
+				or current_state[1] != update.effective_message.message_id
 		) and current_state[0] != "needed_language":
 			await self.start_panel(update, context)
 			return
@@ -545,7 +639,8 @@ class Main_handle:
 					StateFlags.view_languages_group,
 					StateFlags.next_languages_group,
 					StateFlags.previous_languages_group
-				] or current_state[1] != update.effective_message.message_id
+				]
+				or current_state[1] != update.effective_message.message_id
 		) and current_state[0] != "needed_language":
 			await self.start_panel(update, context)
 			return
@@ -595,7 +690,8 @@ class Main_handle:
 					StateFlags.view_languages_group,
 					StateFlags.next_languages_group,
 					StateFlags.previous_languages_group
-				] or current_state[1] != update.effective_message.message_id
+				]
+				or current_state[1] != update.effective_message.message_id
 		) and current_state[0] != "needed_language":
 			await self.start_panel(update, context)
 			return
@@ -623,9 +719,18 @@ class Main_handle:
 				sorted(
 						[
 							CallbackQueryHandler(callback=self.set_language, pattern=StateFlags.set_language),
-							CallbackQueryHandler(callback=self.view_languages_group, pattern=StateFlags.view_languages_group),
-							CallbackQueryHandler(callback=self.previous_languages_group, pattern=StateFlags.previous_languages_group),
-							CallbackQueryHandler(callback=self.next_languages_group, pattern=StateFlags.next_languages_group),
+							CallbackQueryHandler(
+									callback=self.view_languages_group,
+									pattern=StateFlags.view_languages_group
+							),
+							CallbackQueryHandler(
+									callback=self.previous_languages_group,
+									pattern=StateFlags.previous_languages_group
+							),
+							CallbackQueryHandler(
+									callback=self.next_languages_group,
+									pattern=StateFlags.next_languages_group
+							),
 							CallbackQueryHandler(callback=self.answer_question, pattern=StateFlags.answer_question),
 							CallbackQueryHandler(callback=self.reply_to_question, pattern=StateFlags.reply_to_question),
 							CallbackQueryHandler(callback=self.decline_question, pattern=StateFlags.decline_question),
@@ -696,7 +801,11 @@ class Main_view:
 		
 		for doc_item in self.doc[language]:
 			try:
-				await context.bot.send_message(chat_id=update.effective_chat.id, text=doc_item, parse_mode=ParseMode.HTML)
+				await context.bot.send_message(
+						chat_id=update.effective_chat.id,
+						text=doc_item,
+						parse_mode=ParseMode.HTML
+				)
 			except BadRequest:
 				pass
 		
@@ -713,7 +822,9 @@ class Main_view:
         """
 		return list(
 				sorted(
-						[CallbackQueryHandler(callback=self.view_doc, pattern=StateFlags.view_doc)],
+						[
+							CallbackQueryHandler(callback=self.view_doc, pattern=StateFlags.view_doc)
+						],
 						key=lambda x: len(x.pattern.pattern),
 						reverse=True
 				)
@@ -762,7 +873,16 @@ class Main_controls:
             doc (dict[str, list[str]]): Dictionary with documentations in few languages.
         """
 		self.view = Main_view(start_panel, get_user_context, db_handler, doc)
-		self.handle = Main_handle(start_panel, get_user_context, db_handler, main_local["handle"], others_local, languages_dict)
+		
+		self.handle = Main_handle(
+				start_panel,
+				get_user_context,
+				db_handler,
+				main_local["handle"],
+				others_local,
+				languages_dict
+		)
+		
 		self.message = Main_message(start_panel, get_user_context, db_handler, main_local["message"])
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
@@ -777,7 +897,8 @@ class Main_controls:
         """
 		return list(
 				sorted(
-						self.view.get_callback_query_handlers() + self.handle.get_callback_query_handlers(),
+						self.view.get_callback_query_handlers() +
+						self.handle.get_callback_query_handlers(),
 						key=lambda x: len(x.pattern.pattern),
 						reverse=True
 				)

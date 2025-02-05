@@ -142,11 +142,19 @@ class FAQs_message:
 		
 		self.db_handler.faqs_data.change_fag_answer(new_faq_id, faq_question_answer)
 		
-		await context.bot.send_message(chat_id=update.effective_chat.id, text=self.faq_local[language]["new_faq_saved_notification"])
+		await context.bot.send_message(
+				chat_id=update.effective_chat.id,
+				text=self.faq_local[language]["new_faq_saved_notification"]
+		)
 		
 		context.user_data["temp"] = {}
 		context.user_data.pop("processing")
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_faq_answer, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.input_faq_answer,
+				None,
+				context
+		)
 	
 	async def input_faq_id_to_delete(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
@@ -166,7 +174,10 @@ class FAQs_message:
 		try:
 			faq_id = int(update.message.text)
 		except ValueError:
-			await context.bot.send_message(chat_id=update.effective_chat.id, text=self.others_local[language]["integer_needed_warning"])
+			await context.bot.send_message(
+					chat_id=update.effective_chat.id,
+					text=self.others_local[language]["integer_needed_warning"]
+			)
 		else:
 			if not self.db_handler.faqs_data.check_faq_exists(faq_id):
 				await context.bot.send_message(
@@ -182,7 +193,12 @@ class FAQs_message:
 				)
 		finally:
 			context.user_data.pop("processing")
-			self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_faq_id_to_delete, None, context)
+			self.db_handler.users_data.update_last_state(
+					update.effective_user.username,
+					StateFlags.input_faq_id_to_delete,
+					None,
+					context
+			)
 	
 	async def input_faq_id_to_edit(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
@@ -202,10 +218,18 @@ class FAQs_message:
 		try:
 			faq_id = int(update.message.text)
 		except ValueError:
-			await context.bot.send_message(chat_id=update.effective_chat.id, text=self.others_local[language]["integer_needed_warning"])
+			await context.bot.send_message(
+					chat_id=update.effective_chat.id,
+					text=self.others_local[language]["integer_needed_warning"]
+			)
 		
 			context.user_data.pop("processing")
-			self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_faq_id_to_edit, None, context)
+			self.db_handler.users_data.update_last_state(
+					update.effective_user.username,
+					StateFlags.input_faq_id_to_edit,
+					None,
+					context
+			)
 		else:
 			if not self.db_handler.faqs_data.check_faq_exists(faq_id):
 				await context.bot.send_message(
@@ -214,16 +238,27 @@ class FAQs_message:
 				)
 		
 				context.user_data.pop("processing")
-				self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_faq_id_to_edit, None, context)
+				self.db_handler.users_data.update_last_state(
+						update.effective_user.username,
+						StateFlags.input_faq_id_to_edit,
+						None,
+						context
+				)
 			else:
 				context.user_data["temp"]["faq_edit_id"] = faq_id
 		
 				keyboard = [
 					[
-						InlineKeyboardButton(self.faq_local[language]["faq_question_choice_button"], callback_data=StateFlags.edit_faq_text)
+						InlineKeyboardButton(
+								self.faq_local[language]["faq_question_choice_button"],
+								callback_data=StateFlags.edit_faq_text
+						)
 					],
 					[
-						InlineKeyboardButton(self.faq_local[language]["faq_answer_choice_button"], callback_data=StateFlags.edit_faq_answer)
+						InlineKeyboardButton(
+								self.faq_local[language]["faq_answer_choice_button"],
+								callback_data=StateFlags.edit_faq_answer
+						)
 					]
 				]
 				reply_markup = InlineKeyboardMarkup(keyboard)
@@ -233,7 +268,12 @@ class FAQs_message:
 						text=self.others_local[language]["faq_instance_choice_suggestion"],
 						reply_markup=reply_markup
 				)
-				self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_faq_id_to_edit, message.message_id, context)
+				self.db_handler.users_data.update_last_state(
+						update.effective_user.username,
+						StateFlags.input_faq_id_to_edit,
+						message.message_id,
+						context
+				)
 	
 	async def input_faq_instance_to_edit(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
@@ -261,11 +301,19 @@ class FAQs_message:
 		else:
 			raise ValueError(f"Unknown faq_edit_instance: {faq_edit_instance}")
 		
-		await context.bot.send_message(chat_id=update.effective_chat.id, text=self.others_local[language]["faq_instance_changed_confirmation"])
+		await context.bot.send_message(
+				chat_id=update.effective_chat.id,
+				text=self.others_local[language]["faq_instance_changed_confirmation"]
+		)
 		
 		context.user_data["temp"] = {}
 		context.user_data.pop("processing")
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_faq_instance_to_edit, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.input_faq_instance_to_edit,
+				None,
+				context
+		)
 	
 	async def input_faq_text(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
@@ -285,10 +333,18 @@ class FAQs_message:
 		faq_question_text = update.message.text
 		new_faq_id = self.db_handler.faqs_data.add_faq(faq_question_text, "")
 		
-		await context.bot.send_message(chat_id=update.effective_chat.id, text=self.others_local[language]["input_faq_answer_suggestion"])
+		await context.bot.send_message(
+				chat_id=update.effective_chat.id,
+				text=self.others_local[language]["input_faq_answer_suggestion"]
+		)
 		
 		context.user_data["temp"]["new_faq_id"] = new_faq_id
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.input_faq_text, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.input_faq_text,
+				None,
+				context
+		)
 
 
 class FAQs_handle:
@@ -350,14 +406,24 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.faq_local[language]["cant_clear_faq_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.faq_local[language]["cant_clear_faq_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		self.db_handler.faqs_data.clear_faqs()
 		
 		await update.effective_message.edit_text(text=self.faq_local[language]["faq_cleared_notification"])
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.clear_faq_confirmation, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.clear_faq_confirmation,
+				None,
+				context
+		)
 		
 		await self.start_panel(update, context)
 	
@@ -382,20 +448,41 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.faq_local[language]["cant_clear_faq_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.faq_local[language]["cant_clear_faq_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		keyboard = [
 			[
-				InlineKeyboardButton(self.faq_local[language]["faq_clear_button"], callback_data=StateFlags.clear_faq_confirmation)
+				InlineKeyboardButton(
+						self.faq_local[language]["faq_clear_button"],
+						callback_data=StateFlags.clear_faq_confirmation
+				)
 			],
-			[InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.handle_faq)]
+			[
+				InlineKeyboardButton(
+						self.others_local[language]["decline_button"],
+						callback_data=StateFlags.handle_faq
+				)
+			]
 		]
 		reply_markup = InlineKeyboardMarkup(keyboard)
 		
-		message = await update.effective_message.edit_text(text=self.faq_local[language]["faq_clear_aware"], reply_markup=reply_markup)
+		message = await update.effective_message.edit_text(
+				text=self.faq_local[language]["faq_clear_aware"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.clear_faq_request, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.clear_faq_request,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def edit_faq_answer(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -419,12 +506,22 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.faq_local[language]["cant_faq_edit_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.faq_local[language]["cant_faq_edit_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		await update.effective_message.edit_text(text=self.faq_local[language]["input_faq_new_answer_suggestion"])
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.edit_faq_answer, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.edit_faq_answer,
+				None,
+				context
+		)
 		context.user_data["temp"]["faq_edit_instance"] = "answer"
 		context.user_data["processing"] = True
 	
@@ -449,12 +546,22 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.faq_local[language]["cant_faq_edit_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.faq_local[language]["cant_faq_edit_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		await update.effective_message.edit_text(text=self.faq_local[language]["input_faq_new_question_suggestion"])
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.edit_faq_text, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.edit_faq_text,
+				None,
+				context
+		)
 		context.user_data["temp"]["faq_edit_instance"] = "question"
 		context.user_data["processing"] = True
 	
@@ -479,14 +586,36 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.faq_local[language]["cant_faq_edit_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.faq_local[language]["cant_faq_edit_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
-		reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.handle_faq)]])
+		reply_markup = InlineKeyboardMarkup(
+				[
+					[
+						InlineKeyboardButton(
+								self.others_local[language]["decline_button"],
+								callback_data=StateFlags.handle_faq
+						)
+					]
+				]
+		)
 		
-		message = await update.effective_message.edit_text(text=self.faq_local[language]["input_faq_id_to_edit_suggestion"], reply_markup=reply_markup)
+		message = await update.effective_message.edit_text(
+				text=self.faq_local[language]["input_faq_id_to_edit_suggestion"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.edit_faq, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.edit_faq,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def remove_faq(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -510,14 +639,36 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.faq_local[language]["cant_faq_delete_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.faq_local[language]["cant_faq_delete_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
-		reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.handle_faq)]])
+		reply_markup = InlineKeyboardMarkup(
+				[
+					[
+						InlineKeyboardButton(
+								self.others_local[language]["decline_button"],
+								callback_data=StateFlags.handle_faq
+						)
+					]
+				]
+		)
 		
-		message = await update.effective_message.edit_text(text=self.faq_local[language]["input_faq_id_to_delete_suggestion"], reply_markup=reply_markup)
+		message = await update.effective_message.edit_text(
+				text=self.faq_local[language]["input_faq_id_to_delete_suggestion"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.remove_faq, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.remove_faq,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def add_faq(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -541,14 +692,36 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.faq_local[language]["cant_create_faq_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.faq_local[language]["cant_create_faq_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
-		reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(self.others_local[language]["decline_button"], callback_data=StateFlags.handle_faq)]])
+		reply_markup = InlineKeyboardMarkup(
+				[
+					[
+						InlineKeyboardButton(
+								self.others_local[language]["decline_button"],
+								callback_data=StateFlags.handle_faq
+						)
+					]
+				]
+		)
 		
-		message = await update.effective_message.edit_text(text=self.faq_local[language]["input_faq_question_suggestion"], reply_markup=reply_markup)
+		message = await update.effective_message.edit_text(
+				text=self.faq_local[language]["input_faq_question_suggestion"],
+				reply_markup=reply_markup
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.add_faq, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.add_faq,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	async def handle_faq(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -578,17 +751,42 @@ class FAQs_handle:
 			return
 		
 		if not context.user_data["abilities"]["able_to_faqs_handle"]:
-			await functions.warning_rights_error(self.others_local[language]["cant_handle_faq_warning"], self.start_panel, update, context)
+			await functions.warning_rights_error(
+					self.others_local[language]["cant_handle_faq_warning"],
+					self.start_panel,
+					update,
+					context
+			)
 			return
 		
 		keyboard = [
-			[InlineKeyboardButton(self.faq_local[language]["create_faq_button"], callback_data=StateFlags.add_faq)],
-			[InlineKeyboardButton(self.faq_local[language]["delete_faq_button"], callback_data=StateFlags.remove_faq)],
-			[InlineKeyboardButton(self.faq_local[language]["edit_faq_button"], callback_data=StateFlags.edit_faq)],
 			[
-				InlineKeyboardButton(self.faq_local[language]["faq_clear_button"], callback_data=StateFlags.clear_faq_request)
+				InlineKeyboardButton(
+						self.faq_local[language]["create_faq_button"],
+						callback_data=StateFlags.add_faq
+				)
 			],
-			[InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")]
+			[
+				InlineKeyboardButton(
+						self.faq_local[language]["delete_faq_button"],
+						callback_data=StateFlags.remove_faq
+				)
+			],
+			[
+				InlineKeyboardButton(
+						self.faq_local[language]["edit_faq_button"],
+						callback_data=StateFlags.edit_faq
+				)
+			],
+			[
+				InlineKeyboardButton(
+						self.faq_local[language]["faq_clear_button"],
+						callback_data=StateFlags.clear_faq_request
+				)
+			],
+			[
+				InlineKeyboardButton(self.others_local[language]["back_button"], callback_data="start")
+			]
 		]
 		reply_markup = InlineKeyboardMarkup(keyboard)
 		
@@ -600,7 +798,12 @@ class FAQs_handle:
 				reply_markup=reply_markup
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.handle_faq, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.handle_faq,
+				message.message_id,
+				context
+		)
 		context.user_data["processing"] = True
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
@@ -702,8 +905,8 @@ class FAQs_view:
 						f"{row['faq_id']}. {row['question']}",
 						callback_data=f"{StateFlags.view_fag_answer}_id{row['faq_id']}"
 				)
-			] for index,
-			row in faqs_group_data.iterrows()
+			]
+			for index, row in faqs_group_data.iterrows()
 		]
 		keyboard.append(
 				[
@@ -722,7 +925,12 @@ class FAQs_view:
 				reply_markup=reply_markup
 		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_fags_group, message.message_id, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_fags_group,
+				message.message_id,
+				context
+		)
 	
 	async def next_faqs_group(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
@@ -740,7 +948,11 @@ class FAQs_view:
 			return
 		
 		current_state = functions.get_current_state(context)
-		if current_state[0] not in [StateFlags.view_fags_group, StateFlags.next_fags_group, StateFlags.previous_fags_group] or current_state[1] != update.effective_message.message_id:
+		if current_state[0] not in [
+			StateFlags.view_fags_group,
+			StateFlags.next_fags_group,
+			StateFlags.previous_fags_group
+		] or current_state[1] != update.effective_message.message_id:
 			await self.start_panel(update, context)
 			return
 		
@@ -782,7 +994,11 @@ class FAQs_view:
 			return
 		
 		current_state = functions.get_current_state(context)
-		if current_state[0] not in [StateFlags.view_fags_group, StateFlags.next_fags_group, StateFlags.previous_fags_group] or current_state[1] != update.effective_message.message_id:
+		if current_state[0] not in [
+			StateFlags.view_fags_group,
+			StateFlags.next_fags_group,
+			StateFlags.previous_fags_group
+		] or current_state[1] != update.effective_message.message_id:
 			await self.start_panel(update, context)
 			return
 		
@@ -828,7 +1044,11 @@ class FAQs_view:
 			return
 		
 		current_state = functions.get_current_state(context)
-		if current_state[0] not in [StateFlags.view_fags_group, StateFlags.next_fags_group, StateFlags.previous_fags_group] or current_state[1] != update.effective_message.message_id:
+		if current_state[0] not in [
+			StateFlags.view_fags_group,
+			StateFlags.next_fags_group,
+			StateFlags.previous_fags_group
+		] or current_state[1] != update.effective_message.message_id:
 			await self.start_panel(update, context)
 			return
 		
@@ -836,12 +1056,19 @@ class FAQs_view:
 		faq_line = self.db_handler.faqs_data.get_faq(faq_id)
 		
 		await update.effective_message.edit_text(
-				text=self.faq_local[language]["faq_view"].format(question=faq_line['question'],
-				answer=faq_line['answer'],
-				views_count=faq_line['views_count']
-		))
+				text=self.faq_local[language]["faq_view"].format(
+						question=faq_line['question'],
+						answer=faq_line['answer'],
+						views_count=faq_line['views_count']
+				)
+		)
 		
-		self.db_handler.users_data.update_last_state(update.effective_user.username, StateFlags.view_fag_answer, None, context)
+		self.db_handler.users_data.update_last_state(
+				update.effective_user.username,
+				StateFlags.view_fag_answer,
+				None,
+				context
+		)
 		
 		await self.start_panel(update, context)
 	
@@ -857,7 +1084,10 @@ class FAQs_view:
 						[
 							CallbackQueryHandler(callback=self.view_faqs_group, pattern=StateFlags.view_fags_group),
 							CallbackQueryHandler(callback=self.view_faq_answer, pattern=StateFlags.view_fag_answer),
-							CallbackQueryHandler(callback=self.previous_faqs_group, pattern=StateFlags.previous_fags_group),
+							CallbackQueryHandler(
+									callback=self.previous_faqs_group,
+									pattern=StateFlags.previous_fags_group
+							),
 							CallbackQueryHandler(callback=self.next_faqs_group, pattern=StateFlags.next_fags_group)
 						],
 						key=lambda x: len(x.pattern.pattern),
@@ -901,9 +1131,29 @@ class FAQs_controls:
             faq_local (FaqLocalDict): A dictionary containing localized data for FAQ-related messages.
             others_local (OthersLocalDict): A dictionary containing other localized strings used in the application.
         """
-		self.view = FAQs_view(start_panel, get_user_context, db_handler, faq_local["view"], others_local)
-		self.handle = FAQs_handle(start_panel, get_user_context, db_handler, faq_local["handle"], others_local)
-		self.message = FAQs_message(start_panel, get_user_context, db_handler, faq_local["message"], others_local)
+		self.view = FAQs_view(
+				start_panel,
+				get_user_context,
+				db_handler,
+				faq_local["view"],
+				others_local
+		)
+		
+		self.handle = FAQs_handle(
+				start_panel,
+				get_user_context,
+				db_handler,
+				faq_local["handle"],
+				others_local
+		)
+		
+		self.message = FAQs_message(
+				start_panel,
+				get_user_context,
+				db_handler,
+				faq_local["message"],
+				others_local
+		)
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
 		"""
@@ -917,7 +1167,8 @@ class FAQs_controls:
         """
 		return list(
 				sorted(
-						self.view.get_callback_query_handlers() + self.handle.get_callback_query_handlers(),
+						self.view.get_callback_query_handlers() +
+						self.handle.get_callback_query_handlers(),
 						key=lambda x: len(x.pattern.pattern),
 						reverse=True
 				)
