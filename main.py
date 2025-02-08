@@ -22,21 +22,21 @@ from telegram.ext import (
 
 class AnswerBot:
 	"""
-    The main bot class that orchestrates all bot functionalities.
+	The main bot class that orchestrates all bot functionalities.
 
-    This class initializes the database connection, various control instances for different bot features,
-    and handles the main Telegram bot event loop.
-    It manages user authentication, context, and delegates tasks to specialized handler classes.
+	This class initializes the database connection, various control instances for different bot features,
+	and handles the main Telegram bot event loop.
+	It manages user authentication, context, and delegates tasks to specialized handler classes.
 
-    Attributes:
-        settings (dict): settings for database and Telegram API.
-        doc (list[str]): Documentation content to be displayed to users.
-        db_handler (MySQLDataHandler): Instance for database operations.
-        users_controls (Users_controls): Controls user management features.
-        questions_controls (Questions_controls): Controls question management features.
-        FAQs_controls (FAQs_controls): Controls FAQ management features.
-        main_controls (Main_controls): Controls main bot functionalities (asking/answering questions and viewing documentation).
-    """
+	Attributes:
+		settings (dict): settings for database and Telegram API.
+		doc (list[str]): Documentation content to be displayed to users.
+		db_handler (MySQLDataHandler): Instance for database operations.
+		users_controls (Users_controls): Controls user management features.
+		questions_controls (Questions_controls): Controls question management features.
+		FAQs_controls (FAQs_controls): Controls FAQ management features.
+		main_controls (Main_controls): Controls main bot functionalities (asking/answering questions and viewing documentation).
+	"""
 	
 	def __init__(self):
 		"""Initializes the AnswerBot."""
@@ -83,16 +83,16 @@ class AnswerBot:
 	
 	def get_user_context(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Retrieves and sets user context data, including role and abilities.
+		Retrieves and sets user context data, including role and abilities.
 
-        This function fetches user role and abilities from the database and updates the context with this information.
-        It also handles loading additional user-specific data if the user has a role other than "user".
-        This includes handling the addition of chat_id to the database.
+		This function fetches user role and abilities from the database and updates the context with this information.
+		It also handles loading additional user-specific data if the user has a role other than "user".
+		This includes handling the addition of chat_id to the database.
 
-        Args:
-             update (Update): The Telegram update object.
-             context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			 update (Update): The Telegram update object.
+			 context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		if not context.user_data.get("role", False):
 			user = update.effective_user
 		
@@ -113,12 +113,12 @@ class AnswerBot:
 	
 	async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Displays the main menu for the user based on their abilities.
+		Displays the main menu for the user based on their abilities.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		context.user_data["temp"] = {}
@@ -239,14 +239,14 @@ class AnswerBot:
 	
 	async def handle_message(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Handles incoming text messages from users.
+		Handles incoming text messages from users.
 
-        Delegates message handling to the appropriate control class based on the current state.
+		Delegates message handling to the appropriate control class based on the current state.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		current_state = functions.get_current_state(context)
 		
@@ -279,11 +279,11 @@ class AnswerBot:
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
 		"""
-        Returns a combined list of all callback query handlers.
+		Returns a combined list of all callback query handlers.
 
-        Returns:
-            list[CallbackQueryHandler]: A list of CallbackQueryHandler instances for all features.
-        """
+		Returns:
+			list[CallbackQueryHandler]: A list of CallbackQueryHandler instances for all features.
+		"""
 		return list(
 				sorted(
 						self.main_controls.get_callback_query_handlers() +
@@ -320,5 +320,5 @@ if __name__ == "__main__":
 		answer_bot = AnswerBot()
 		answer_bot.run()
 	else:
-		message = f"Some hidden files were created:\n- {'\n- '.join(str(path.relative_to(".")) for path in hidden_files_built)}\n\nFill them with your data."
-		print(message)
+		build_message = f"Some hidden files were created:\n- {'\n- '.join(str(path.relative_to(".")) for path in hidden_files_built)}\n\nFill them with your data."
+		print(build_message)

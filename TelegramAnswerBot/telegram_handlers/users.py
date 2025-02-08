@@ -28,27 +28,27 @@ from TelegramAnswerBot.objects_types import (
 @dataclass(frozen=True)
 class StateFlags:
 	"""
-    Constants representing different states in the bot's workflow.
+	Constants representing different states in the bot's workflow.
 
-    This class defines string constants to represent various states within the bot's operation.
-    These constants are utilized to track the current stage of interaction with the user, enabling the bot
-    to maintain context and respond appropriately during different phases of user interaction, particularly
-    for user management.
+	This class defines string constants to represent various states within the bot's operation.
+	These constants are utilized to track the current stage of interaction with the user, enabling the bot
+	to maintain context and respond appropriately during different phases of user interaction, particularly
+	for user management.
 
-    Attributes:
-        handle_moderator_username_to_delete_message (str): State for handling moderator username input to delete a message.
-        handle_new_moderator_username_message (str): State for handling moderator username input for a new message.
+	Attributes:
+		handle_moderator_username_to_delete_message (str): State for handling moderator username input to delete a message.
+		handle_new_moderator_username_message (str): State for handling moderator username input for a new message.
 
-        view_users_list (str): State for viewing the list of users.
-        view_users_statistics (str): State for viewing users' statistics.
-        view_users (str): State for the main user management menu.
+		view_users_list (str): State for viewing the list of users.
+		view_users_statistics (str): State for viewing users' statistics.
+		view_users (str): State for the main user management menu.
 
-        remove_user_role (str): State for removing a user's role.
-        add_role_chosen (str): State for when a role has been chosen to be added.
-        chose_user_to_add_role (str): State for choosing a user to add a role to.
-        add_user_role (str): State for adding a role to a user.
-        handle_users (str): State representing the main menu for user handling.
-    """
+		remove_user_role (str): State for removing a user's role.
+		add_role_chosen (str): State for when a role has been chosen to be added.
+		chose_user_to_add_role (str): State for choosing a user to add a role to.
+		add_user_role (str): State for adding a role to a user.
+		handle_users (str): State representing the main menu for user handling.
+	"""
 	handle_moderator_username_to_delete_message = "handle_moderator_username_to_delete_message"
 	handle_new_moderator_username_message = "handle_new_moderator_username_message"
 	
@@ -65,19 +65,19 @@ class StateFlags:
 
 class Users_messages:
 	"""
-    Handles message-based interactions related to user management.
+	Handles message-based interactions related to user management.
 
-    This class processes text messages from users regarding adding or removing roles,
-    interacting with the database to update user information and sending corresponding
-    messages to inform users about the changes. Uses localized strings for internationalization.
+	This class processes text messages from users regarding adding or removing roles,
+	interacting with the database to update user information and sending corresponding
+	messages to inform users about the changes. Uses localized strings for internationalization.
 
-    Attributes:
-        start_panel (function): Function to display the start panel.
-        get_user_context (function): Function to retrieve user context.
-        db_handler (MySQLDataHandler): An instance of the MySQLDataHandler for database interaction.
-        users_local (UsersMessageLocalDict): Localized strings specific to user message operations.
-        roles_local (RolesLocalDict): Localized strings related to roles.
-    """
+	Attributes:
+		start_panel (function): Function to display the start panel.
+		get_user_context (function): Function to retrieve user context.
+		db_handler (MySQLDataHandler): An instance of the MySQLDataHandler for database interaction.
+		users_local (UsersMessageLocalDict): Localized strings specific to user message operations.
+		roles_local (RolesLocalDict): Localized strings related to roles.
+	"""
 	
 	def __init__(
 			self,
@@ -88,15 +88,15 @@ class Users_messages:
 			roles_local: RolesLocalDict
 	):
 		"""
-        Initializes the Users_messages class.
+		Initializes the Users_messages class.
 
-        Args:
-            start_panel (start_panel_type): Function to display the start panel.
-            get_user_context (get_user_context_type): Function to retrieve user context.
-            db_handler (MySQLDataHandler): The data handler for database operations.
-            users_local (UsersMessageLocalDict): Localized strings for user message operations.
-            roles_local (RolesLocalDict): Localized strings related to roles.
-        """
+		Args:
+			start_panel (start_panel_type): Function to display the start panel.
+			get_user_context (get_user_context_type): Function to retrieve user context.
+			db_handler (MySQLDataHandler): The data handler for database operations.
+			users_local (UsersMessageLocalDict): Localized strings for user message operations.
+			roles_local (RolesLocalDict): Localized strings related to roles.
+		"""
 		self.start_panel = start_panel
 		self.get_user_context = get_user_context
 		self.db_handler = db_handler
@@ -105,12 +105,12 @@ class Users_messages:
 	
 	async def input_username_to_add_role(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Processes a message containing a username to add a role to.
+		Processes a message containing a username to add a role to.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -139,12 +139,12 @@ class Users_messages:
 	
 	async def input_username_to_remove_role(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Processes a message containing a username to remove a role from.
+		Processes a message containing a username to remove a role from.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -193,20 +193,20 @@ class Users_messages:
 
 class Users_handle:
 	"""
-    Handles callback query interactions related to user management.
+	Handles callback query interactions related to user management.
 
-    This class manages the flow of adding and removing roles from users, guiding the user
-    through the process with interactive messages and callbacks. It utilizes the database
-    to validate actions and update user information. Uses localized strings for internationalization.
+	This class manages the flow of adding and removing roles from users, guiding the user
+	through the process with interactive messages and callbacks. It utilizes the database
+	to validate actions and update user information. Uses localized strings for internationalization.
 
-    Attributes:
-        start_panel (function): The function to display the bot's start panel.
-        get_user_context (function): The function to retrieve user-specific context data.
-        db_handler (MySQLDataHandler): The data handler for database operations.
-        users_local (UsersHandleLocalDict): Localized strings specific to user handling operations.
-        others_local (OthersLocalDict): Localized strings for general application use.
-        roles_local (RolesLocalDict): Localized strings related to roles.
-    """
+	Attributes:
+		start_panel (function): The function to display the bot's start panel.
+		get_user_context (function): The function to retrieve user-specific context data.
+		db_handler (MySQLDataHandler): The data handler for database operations.
+		users_local (UsersHandleLocalDict): Localized strings specific to user handling operations.
+		others_local (OthersLocalDict): Localized strings for general application use.
+		roles_local (RolesLocalDict): Localized strings related to roles.
+	"""
 	
 	def __init__(
 			self,
@@ -218,16 +218,16 @@ class Users_handle:
 			roles_local: RolesLocalDict
 	):
 		"""
-        Initializes the Users_handle class.
+		Initializes the Users_handle class.
 
-        Args:
-            start_panel (function): Function to display the start panel.
-            get_user_context (function): Function to retrieve user context.
-            db_handler (MySQLDataHandler): The database handler instance.
-            users_local (UsersHandleLocalDict): Localized strings for user handling operations.
-            others_local (OthersLocalDict): Localized strings for general application use.
-            roles_local (RolesLocalDict): Localized strings related to roles.
-        """
+		Args:
+			start_panel (function): Function to display the start panel.
+			get_user_context (function): Function to retrieve user context.
+			db_handler (MySQLDataHandler): The database handler instance.
+			users_local (UsersHandleLocalDict): Localized strings for user handling operations.
+			others_local (OthersLocalDict): Localized strings for general application use.
+			roles_local (RolesLocalDict): Localized strings related to roles.
+		"""
 		self.start_panel = start_panel
 		self.get_user_context = get_user_context
 		self.db_handler = db_handler
@@ -237,14 +237,14 @@ class Users_handle:
 	
 	async def remove_user_role(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Handles the removal of a user's role.
+		Handles the removal of a user's role.
 
-        Prompts the user for the username of the user whose role needs to be removed.
+		Prompts the user for the username of the user whose role needs to be removed.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -292,14 +292,14 @@ class Users_handle:
 	
 	async def chose_user_to_add_role(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Handles choosing a user to add a role to.
+		Handles choosing a user to add a role to.
 
-        Prompts the user for the username after a role has been selected.
+		Prompts the user for the username after a role has been selected.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -334,14 +334,14 @@ class Users_handle:
 	
 	async def add_user_role(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Handles the process of adding a role to a user.
+		Handles the process of adding a role to a user.
 
-        Presents a list of available roles for the user to choose from.
+		Presents a list of available roles for the user to choose from.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -371,8 +371,7 @@ class Users_handle:
 						self.roles_local[language][accepted_role],
 						callback_data=f"{StateFlags.chose_user_to_add_role}_*{accepted_role}*"
 				)
-			]
-			for accepted_role in accepted_roles
+			] for accepted_role in accepted_roles
 		]
 		keyboard.append(
 				[
@@ -399,14 +398,14 @@ class Users_handle:
 	
 	async def handle_users(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Provides the main interface for user management.
+		Provides the main interface for user management.
 
-        Offers options to add or remove roles.
+		Offers options to add or remove roles.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -465,11 +464,11 @@ class Users_handle:
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
 		"""
-        Returns a list of CallbackQueryHandlers for user management interactions.
+		Returns a list of CallbackQueryHandlers for user management interactions.
 
-        Returns:
-            list[CallbackQueryHandler]: A list of CallbackQueryHandler objects.
-        """
+		Returns:
+			list[CallbackQueryHandler]: A list of CallbackQueryHandler objects.
+		"""
 		return list(
 				sorted(
 						[
@@ -489,20 +488,20 @@ class Users_handle:
 
 class Users_view:
 	"""
-    Handles displaying user-related information.
+	Handles displaying user-related information.
 
-    This class provides functionalities to view user statistics, the list of users,
-    and manages the navigation between these views. It interacts with the database
-    to retrieve the necessary data and presents it to the user. Uses localized strings for internationalization.
+	This class provides functionalities to view user statistics, the list of users,
+	and manages the navigation between these views. It interacts with the database
+	to retrieve the necessary data and presents it to the user. Uses localized strings for internationalization.
 
-    Attributes:
-        start_panel (function): The function to display the bot's start panel.
-        get_user_context (function): The function to retrieve user-specific context data.
-        db_handler (MySQLDataHandler): The data handler for database operations.
-        users_local (UsersViewLocalDict): Localized strings specific to user view operations.
-        others_local (OthersLocalDict): Localized strings for general application use.
-        roles_local (RolesLocalDict): Localized strings related to roles.
-    """
+	Attributes:
+		start_panel (function): The function to display the bot's start panel.
+		get_user_context (function): The function to retrieve user-specific context data.
+		db_handler (MySQLDataHandler): The data handler for database operations.
+		users_local (UsersViewLocalDict): Localized strings specific to user view operations.
+		others_local (OthersLocalDict): Localized strings for general application use.
+		roles_local (RolesLocalDict): Localized strings related to roles.
+	"""
 	
 	def __init__(
 			self,
@@ -514,16 +513,16 @@ class Users_view:
 			roles_local: RolesLocalDict
 	):
 		"""
-        Initializes the Users_view class.
+		Initializes the Users_view class.
 
-        Args:
-            start_panel (function): The function to display the start panel.
-            get_user_context (function): The function to retrieve user context.
-            db_handler (MySQLDataHandler): The database handler instance.
-            users_local (UsersViewLocalDict): Localized strings for user view operations.
-            others_local (OthersLocalDict): Localized strings for general application use.
-            roles_local (RolesLocalDict): Localized strings related to roles.
-        """
+		Args:
+			start_panel (function): The function to display the start panel.
+			get_user_context (function): The function to retrieve user context.
+			db_handler (MySQLDataHandler): The database handler instance.
+			users_local (UsersViewLocalDict): Localized strings for user view operations.
+			others_local (OthersLocalDict): Localized strings for general application use.
+			roles_local (RolesLocalDict): Localized strings related to roles.
+		"""
 		self.start_panel = start_panel
 		self.get_user_context = get_user_context
 		self.db_handler = db_handler
@@ -533,12 +532,12 @@ class Users_view:
 	
 	async def view_users_list(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Displays the list of users and their roles.
+		Displays the list of users and their roles.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -582,12 +581,12 @@ class Users_view:
 	
 	async def view_users_statistics(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Displays user statistics, such as the number of questions handled.
+		Displays user statistics, such as the number of questions handled.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -633,12 +632,12 @@ class Users_view:
 	
 	async def view_users(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Provides the main interface for choosing between viewing user statistics or the user list.
+		Provides the main interface for choosing between viewing user statistics or the user list.
 
-        Args:
-            update (Update): The Telegram update object.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
-        """
+		Args:
+			update (Update): The Telegram update object.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram context object.
+		"""
 		self.get_user_context(update, context)
 		language = functions.get_language(context)
 		
@@ -697,11 +696,11 @@ class Users_view:
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
 		"""
-        Returns a list of CallbackQueryHandlers for user viewing interactions.
+		Returns a list of CallbackQueryHandlers for user viewing interactions.
 
-        Returns:
-            list[CallbackQueryHandler]: A list of CallbackQueryHandler objects.
-        """
+		Returns:
+			list[CallbackQueryHandler]: A list of CallbackQueryHandler objects.
+		"""
 		return list(
 				sorted(
 						[
@@ -720,18 +719,18 @@ class Users_view:
 
 class Users_controls:
 	"""
-    Manages the control flow and interactions related to user management.
+	Manages the control flow and interactions related to user management.
 
-    This class acts as a central controller, combining the functionalities of Users_view,
-    Users_handle, and Users_messages. It provides a unified interface for handling
-    user interactions related to viewing user information, modifying user roles, and
-    sending related messages. Uses localized strings for internationalization.
+	This class acts as a central controller, combining the functionalities of Users_view,
+	Users_handle, and Users_messages. It provides a unified interface for handling
+	user interactions related to viewing user information, modifying user roles, and
+	sending related messages. Uses localized strings for internationalization.
 
-    Attributes:
-        view (Users_view): An instance of the Users_view class for displaying user information.
-        handle (Users_handle): An instance of the Users_handle class for managing user actions.
-        message (Users_messages): An instance of the Users_messages class for sending user-related messages.
-    """
+	Attributes:
+		view (Users_view): An instance of the Users_view class for displaying user information.
+		handle (Users_handle): An instance of the Users_handle class for managing user actions.
+		message (Users_messages): An instance of the Users_messages class for sending user-related messages.
+	"""
 	
 	def __init__(
 			self,
@@ -743,16 +742,16 @@ class Users_controls:
 			roles_local: RolesLocalDict
 	):
 		"""
-        Initializes the Users_controls class.
+		Initializes the Users_controls class.
 
-        Args:
-            start_panel (function): The function to display the bot's start panel.
-            get_user_context (function): The function to retrieve user-specific context data.
-            db_handler (MySQLDataHandler): The data handler for database interactions.
-            users_local (UsersLocalDict): Localized strings for various user-related operations (view, handle, message).
-            others_local (OthersLocalDict): Localized strings for general application use.
-            roles_local (RolesLocalDict): Localized strings related to roles.
-        """
+		Args:
+			start_panel (function): The function to display the bot's start panel.
+			get_user_context (function): The function to retrieve user-specific context data.
+			db_handler (MySQLDataHandler): The data handler for database interactions.
+			users_local (UsersLocalDict): Localized strings for various user-related operations (view, handle, message).
+			others_local (OthersLocalDict): Localized strings for general application use.
+			roles_local (RolesLocalDict): Localized strings related to roles.
+		"""
 		self.view = Users_view(
 				start_panel,
 				get_user_context,
@@ -781,14 +780,14 @@ class Users_controls:
 	
 	def get_callback_query_handlers(self) -> list[CallbackQueryHandler]:
 		"""
-        Retrieves all callback query handlers related to user management.
+		Retrieves all callback query handlers related to user management.
 
-        Combines handlers from Users_view and Users_handle, sorting them by pattern length
-        in descending order to prioritize more specific handlers.
+		Combines handlers from Users_view and Users_handle, sorting them by pattern length
+		in descending order to prioritize more specific handlers.
 
-        Returns:
-            list[CallbackQueryHandler]: A list of combined and sorted CallbackQueryHandler objects.
-        """
+		Returns:
+			list[CallbackQueryHandler]: A list of combined and sorted CallbackQueryHandler objects.
+		"""
 		return list(
 				sorted(
 						self.view.get_callback_query_handlers() +

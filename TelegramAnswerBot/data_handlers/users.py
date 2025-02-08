@@ -11,29 +11,29 @@ from TelegramAnswerBot.data_handlers.base import DataHandler
 
 class UsersDataHandler(DataHandler):
 	"""
-    Manages user data stored in a database table named 'users'. Provides methods for adding, updating, and retrieving user information, including their roles and abilities.
-    """
+	Manages user data stored in a database table named 'users'. Provides methods for adding, updating, and retrieving user information, including their roles and abilities.
+	"""
 	
 	def add_user_chat_id(self, username: str, chat_id: int):
 		"""
-        Updates a user's chat ID.
+		Updates a user's chat ID.
 
-        Args:
-            username (str): The username of the user to update.
-            chat_id (int): The new chat ID for the user.
-        """
+		Args:
+			username (str): The username of the user to update.
+			chat_id (int): The new chat ID for the user.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                UPDATE
-                    users
-                SET
-                    chat_id = %s
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				UPDATE
+					users
+				SET
+					chat_id = %s
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(chat_id, username)
 		)
 		connection.commit()
@@ -43,25 +43,25 @@ class UsersDataHandler(DataHandler):
 	
 	def add_user(self, username: str, role: str):
 		"""
-        Adds a new user to the database.
+		Adds a new user to the database.
 
-        Args:
-            username (str): The username of the new user.
-            role (str): The role assigned to the user.
-        """
+		Args:
+			username (str): The username of the new user.
+			role (str): The role assigned to the user.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                INSERT INTO
-                    users (
-                        username,
-                        role,
-                        user_context_data
-                    )
-                VALUES
-                    (%s, %s, %s)
-                """,
+				INSERT INTO
+					users (
+						username,
+						role,
+						user_context_data
+					)
+				VALUES
+					(%s, %s, %s)
+				""",
 				(username, role, "{}")
 		)
 		connection.commit()
@@ -71,23 +71,23 @@ class UsersDataHandler(DataHandler):
 	
 	def change_user_role(self, username: str, role: str):
 		"""
-        Adds a new user to the database.
+		Adds a new user to the database.
 
-        Args:
-            username (str): The username of the new user.
-            role (str): The role assigned to the user.
-        """
+		Args:
+			username (str): The username of the new user.
+			role (str): The role assigned to the user.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                SELECT
-                    *
-                FROM
-                    users
-                WHERE
-                    username = %s
-                """,
+				SELECT
+					*
+				FROM
+					users
+				WHERE
+					username = %s
+				""",
 				(username,)
 		)
 		
@@ -96,14 +96,14 @@ class UsersDataHandler(DataHandler):
 		if user[0]:
 			cursor.execute(
 					"""
-                    UPDATE
-                        users
-                    SET
-                        role = %s
-                    WHERE
-                        username = %s
-                    LIMIT 1
-                    """,
+					UPDATE
+						users
+					SET
+						role = %s
+					WHERE
+						username = %s
+					LIMIT 1
+					""",
 					(username, role)
 			)
 			connection.commit()
@@ -115,8 +115,8 @@ class UsersDataHandler(DataHandler):
 	
 	def create_table(self):
 		"""
-        Creates the 'faq' table if it doesn't exist.
-        """
+		Creates the 'faq' table if it doesn't exist.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
@@ -158,34 +158,34 @@ class UsersDataHandler(DataHandler):
 	
 	def get_role_abilities(self, role_name: str) -> objects_types.RoleAbilitiesDict:
 		"""
-        Retrieves the abilities associated with a specific role.
+		Retrieves the abilities associated with a specific role.
 
-        Args:
-            role_name (str): The name of the role.
+		Args:
+			role_name (str): The name of the role.
 
-        Returns:
-            objects_types.RoleAbilitiesDict: A dictionary where keys are ability names (e.g., "receives_messages", "able_to_users_handle") and values are booleans indicating whether the role has that ability.
-        """
+		Returns:
+			objects_types.RoleAbilitiesDict: A dictionary where keys are ability names (e.g., "receives_messages", "able_to_users_handle") and values are booleans indicating whether the role has that ability.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				f"""
-                SELECT
-                    receives_messages,
-                    able_to_users_handle,
-                    able_to_users_view,
-                    able_to_faqs_handle,
-                    able_to_faqs_view,
-                    able_to_questions_handle,
-                    able_to_questions_view,
-                    able_to_ask,
-                    able_to_answer
-                FROM
-                    roles
-                WHERE
-                    role_name = %s
-                LIMIT 1
-                """,
+				SELECT
+					receives_messages,
+					able_to_users_handle,
+					able_to_users_view,
+					able_to_faqs_handle,
+					able_to_faqs_view,
+					able_to_questions_handle,
+					able_to_questions_view,
+					able_to_ask,
+					able_to_answer
+				FROM
+					roles
+				WHERE
+					role_name = %s
+				LIMIT 1
+				""",
 				(role_name,)
 		)
 		
@@ -201,31 +201,31 @@ class UsersDataHandler(DataHandler):
 	
 	def get_roles_by_priority(self, start_role: str, sign: str) -> list[str]:
 		"""
-        Retrieves roles based on their priority relative to a given `start_role`.
+		Retrieves roles based on their priority relative to a given `start_role`.
 
-        Args:
-            start_role (str): The reference role.
-            sign (str): A comparison operator ("<" or ">") to determine the priority relative to `start_role`.
+		Args:
+			start_role (str): The reference role.
+			sign (str): A comparison operator ("<" or ">") to determine the priority relative to `start_role`.
 
-        Returns:
-            list[str]: A list of role names that meet the specified priority criteria. Excludes the "user" role.
-        """
+		Returns:
+			list[str]: A list of role names that meet the specified priority criteria. Excludes the "user" role.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				f"""
-                SELECT
-                    role_name
-                FROM
-                    roles
-                WHERE
-                    role_level {sign} (
-                        SELECT role_level
-                        FROM roles
-                        WHERE role_name = %s
-                    )
-                    AND role_name != "user"
-                """,
+				SELECT
+					role_name
+				FROM
+					roles
+				WHERE
+					role_level {sign} (
+						SELECT role_level
+						FROM roles
+						WHERE role_name = %s
+					)
+					AND role_name != "user"
+				""",
 				(start_role,)
 		)
 		
@@ -238,26 +238,26 @@ class UsersDataHandler(DataHandler):
 	
 	def get_user_chat_id(self, username: str) -> typing.Optional[int]:
 		"""
-        Retrieves the chat ID associated with a specific username.
+		Retrieves the chat ID associated with a specific username.
 
-        Args:
-            username (str): The username of the user.
+		Args:
+			username (str): The username of the user.
 
-        Returns:
-            typing.Optional[int]: The user's chat ID, or None if no chat ID is found for the user.
-        """
+		Returns:
+			typing.Optional[int]: The user's chat ID, or None if no chat ID is found for the user.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                SELECT
-                    chat_id
-                FROM
-                    users
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				SELECT
+					chat_id
+				FROM
+					users
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(username,)
 		)
 		chat_id = cursor.fetchone()
@@ -269,26 +269,26 @@ class UsersDataHandler(DataHandler):
 	
 	def get_user_data(self, username: str) -> objects_types.UserDataDict:
 		"""
-        Retrieves all data for a specific user.
+		Retrieves all data for a specific user.
 
-        Args:
-            username (str): The username of the user.
+		Args:
+			username (str): The username of the user.
 
-        Returns:
-            objects_types.UserDataDict: A dictionary containing the user's data. The `user_context_data` field is parsed as a JSON object. Returns an empty dictionary if the user is not found.
-        """
+		Returns:
+			objects_types.UserDataDict: A dictionary containing the user's data. The `user_context_data` field is parsed as a JSON object. Returns an empty dictionary if the user is not found.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                SELECT
-                    *
-                FROM
-                    users
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				SELECT
+					*
+				FROM
+					users
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(username,)
 		)
 		
@@ -302,26 +302,26 @@ class UsersDataHandler(DataHandler):
 	
 	def get_user_language(self, username: str) -> str | None:
 		"""
-        Retrieves the language of a specific user.
+		Retrieves the language of a specific user.
 
-        Args:
-            username (str): The username of the user.
+		Args:
+			username (str): The username of the user.
 
-        Returns:
-            str | None: The user's language. Returns None if the user is not found or doesn't have a language assigned.
-        """
+		Returns:
+			str | None: The user's language. Returns None if the user is not found or doesn't have a language assigned.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                SELECT
-                    language
-                FROM
-                    users
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				SELECT
+					language
+				FROM
+					users
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(username,)
 		)
 		language = cursor.fetchone()
@@ -333,26 +333,26 @@ class UsersDataHandler(DataHandler):
 	
 	def get_user_role(self, username: str) -> tuple[str, bool]:
 		"""
-        Retrieves the role of a specific user.
+		Retrieves the role of a specific user.
 
-        Args:
-            username (str): The username of the user.
+		Args:
+			username (str): The username of the user.
 
-        Returns:
-            tuple[str, bool]: The user's role. Returns "user" if the user is not found or doesn't have a role assigned.
-        """
+		Returns:
+			tuple[str, bool]: The user's role. Returns "user" if the user is not found or doesn't have a role assigned.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                SELECT
-                    role
-                FROM
-                    users
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				SELECT
+					role
+				FROM
+					users
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(username,)
 		)
 		role = cursor.fetchone()
@@ -364,36 +364,36 @@ class UsersDataHandler(DataHandler):
 	
 	def get_users_chats_receiving_messages(self) -> list[int]:
 		"""
-        Retrieves a list of chat IDs for users who have a chat ID set (presumably indicating they should receive messages) and resets their `user_context_data`.
+		Retrieves a list of chat IDs for users who have a chat ID set (presumably indicating they should receive messages) and resets their `user_context_data`.
 
-        Returns:
-            list[int]: A list of chat IDs.
-        """
+		Returns:
+			list[int]: A list of chat IDs.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                SELECT
-                    chat_id
-                FROM
-                    users
-                WHERE
-                    chat_id IS NOT NULL
-                FOR UPDATE
-                """
+				SELECT
+					chat_id
+				FROM
+					users
+				WHERE
+					chat_id IS NOT NULL
+				FOR UPDATE
+				"""
 		)
 		
 		users_chats_receiving_messages = [row[0] for row in cursor.fetchall()]
 		
 		cursor.execute(
 				"""
-                UPDATE
-                    users
-                SET
-                    user_context_data = "{}"
-                WHERE
-                    chat_id IS NOT NULL
-                """
+				UPDATE
+					users
+				SET
+					user_context_data = "{}"
+				WHERE
+					chat_id IS NOT NULL
+				"""
 		)
 		connection.commit()
 		
@@ -404,27 +404,27 @@ class UsersDataHandler(DataHandler):
 	
 	def get_users_data(self) -> pandas.DataFrame:
 		"""
-        Retrieves data for all users, including their roles and role levels.
+		Retrieves data for all users, including their roles and role levels.
 
-        Returns:
-           pandas.DataFrame: A Pandas DataFrame containing user data.
-        """
+		Returns:
+		   pandas.DataFrame: A Pandas DataFrame containing user data.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                SELECT
-                    *
-                FROM
-                    users
-                JOIN
-                    roles
-                ON
-                    users.role = roles.role_name
-                ORDER BY
-                    roles.role_level DESC,
-                    users.username ASC
-                """
+				SELECT
+					*
+				FROM
+					users
+				JOIN
+					roles
+				ON
+					users.role = roles.role_name
+				ORDER BY
+					roles.role_level DESC,
+					users.username ASC
+				"""
 		)
 		
 		users_data = functions.get_db_data_frame([header[0] for header in cursor.description], cursor.fetchall())
@@ -436,20 +436,20 @@ class UsersDataHandler(DataHandler):
 	
 	def remove_user(self, username: str):
 		"""
-        Removes a user from the database.
+		Removes a user from the database.
 
-        Args:
-            username (str): The username of the user to remove.
-        """
+		Args:
+			username (str): The username of the user to remove.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		cursor.execute(
 				"""
-                DELETE FROM users
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				DELETE FROM users
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(username,)
 		)
 		connection.commit()
@@ -459,27 +459,27 @@ class UsersDataHandler(DataHandler):
 	
 	def update_language(self, username: str, language: str, context: ContextTypes.DEFAULT_TYPE):
 		"""
-        Updates a user's last recorded state, message ID, and context data in the database.
+		Updates a user's last recorded state, message ID, and context data in the database.
 
-        Args:
-            username (str): The username of the user to update.
-            language (str): The user's last state.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram bot context.
-        """
+		Args:
+			username (str): The username of the user to update.
+			language (str): The user's last state.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram bot context.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		context.user_data["language"] = language
 		
 		cursor.execute(
 				"""
-                UPDATE
-                    users
-                SET
-                    language = %s
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				UPDATE
+					users
+				SET
+					language = %s
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(language, username)
 		)
 		connection.commit()
@@ -495,28 +495,28 @@ class UsersDataHandler(DataHandler):
 			context: ContextTypes.DEFAULT_TYPE
 	):
 		"""
-        Updates a user's last recorded state, message ID, and context data in the database.
+		Updates a user's last recorded state, message ID, and context data in the database.
 
-        Args:
-            username (str): The username of the user to update.
-            last_state (str): The user's last state.
-            last_message_id (typing.Optional[int]): The ID of the last message.
-            context (ContextTypes.DEFAULT_TYPE): The Telegram bot context.
-        """
+		Args:
+			username (str): The username of the user to update.
+			last_state (str): The user's last state.
+			last_message_id (typing.Optional[int]): The ID of the last message.
+			context (ContextTypes.DEFAULT_TYPE): The Telegram bot context.
+		"""
 		connection, cursor = self.get_attributes()
 		
 		context.user_data["current_state"] = (last_state, last_message_id)
 		
 		cursor.execute(
 				"""
-                UPDATE
-                    users
-                SET
-                    user_context_data = %s
-                WHERE
-                    username = %s
-                LIMIT 1
-                """,
+				UPDATE
+					users
+				SET
+					user_context_data = %s
+				WHERE
+					username = %s
+				LIMIT 1
+				""",
 				(
 						json.dumps(
 								{
